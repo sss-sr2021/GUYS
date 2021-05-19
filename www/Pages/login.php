@@ -19,7 +19,7 @@
      <div class='wrapper'>
         <header>
             <img src="" alt="ロゴ画像" />
-            <h1>リサーチGO！</h1>
+            <h1>ログイン</h1>
             <a href ="createAccount.php">アカウント作成</a>
                 <nav>
                     <ul>
@@ -31,7 +31,7 @@
         </header>
      <div class='container'>
          <main>
-            <h1>ログイン</h1>
+            <h2>ログイン</h2>
                 <form action="" method="post">
                     <p>メールアドレス：<input type="email" name="email"></p>
                     <p>パスワード：<input type="password" name="password"></p>
