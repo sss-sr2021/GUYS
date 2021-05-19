@@ -1,6 +1,6 @@
 <?php
 /*
- * top.php :トップページ画面
+ * createAccount.php :アカウント作成画面
  * 
  * Author:伊藤明洋
  * Version :0.0.1
@@ -14,8 +14,8 @@
 <!DOCTYPE html>
 <html>
     <!--
-        div class="wrapper":全体
-        div class="container":mainの中
+        div class="wrapper" :全体
+        div class="container" :mainの中
     -->
  <head><meta charset="utf-8"></head>
  <title>トップページ</title>
@@ -23,7 +23,7 @@
      <div class='wrapper'>
         <header>
             <img src="" alt="ロゴ画像" />
-            <h1>リサーチGO！</h1>
+            <h1>アカウント作成</h1>
             <a href ="createAccount.php">アカウント作成</a>
                 <nav>
                     <ul>
@@ -35,8 +35,20 @@
         </header>
      <div class='container'>
          <main>
-            <img src="" alt="背景画像" />
-            <p>機能紹介</p>
+            <h2>アカウント作成フォーム</h2>
+            <p>メールアドレス：</p>
+            <input type="email" name="email"><br />
+            <p>パスワード：</p>
+            <input type="password" name="password"><br />
+            <p>お名前：</p>
+            <input type="text" name="name"><br />
+            <p>性別：</p>
+            <label><input type="radio" name="gender" value="1" />男</label>
+            <label><input type="radio" name="gender" value="2" />女</label>
+            <label><input type="radio" name="gender" value="3" />その他</label>
+            <br />
+            <!-- 作成ボタン　-->
+            <input type="submit" name="create" value="作成">
          </main>
      </div>
         <footer>
