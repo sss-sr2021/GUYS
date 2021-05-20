@@ -16,7 +16,6 @@
     if(!empty($_POST['submit'])){
         $dbh = dbInit();
         $user = getLoginUser(['email' => $email]);//usesテーブルの中のすべての列の中からemailの列を検索している
-        //print_r($user);
             if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、setting.phpに飛ぶ
                 header('Location:myPage.php');
             }else{
@@ -33,8 +32,8 @@ include('./commonParts/header.php');
          <main>
             <h2>ログイン</h2>
                 <form action="" method="post">
-                    <p>メールアドレス：<input type="email" name="email" require></p>
-                    <p>パスワード：<input type="password" name="password" require></p>
+                    <p>メールアドレス：<input type="email" name="email" required></p>
+                    <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="submit" value="ログイン"></p>
                 </form>
          </main>
