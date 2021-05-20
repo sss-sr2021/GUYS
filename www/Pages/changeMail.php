@@ -21,9 +21,9 @@ include('./commonParts/header.php');
          <main>
             <h2>メールアドレス変更</h2>
                 <form action="" method="post">
-                    <p>新しいメールアドレス：<input type="email" name="email" require></p>
-                    <p>新しいメールアドレス：<br /> （確認のためもう一度） <input type="email" name="email" require></p>
-                    <p>パスワード：<input type="password" name="password" require></p>
+                    <p>新しいメールアドレス：<input type="email" name="email" required></p>
+                    <p>新しいメールアドレス：<br /> （確認のためもう一度） <input type="email" name="email" required></p>
+                    <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="submit" value="変更"></p>
                 </form>
          </main>

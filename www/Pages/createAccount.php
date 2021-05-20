@@ -21,9 +21,9 @@ include('./commonParts/header.php');
          <main>
             <h2>アカウント作成</h2>
                 <form action="" method="post">
-                    <p>メールアドレス：<input type="email" name="email" require></p>
-                    <p>パスワード：<input type="password" name="password" require></p>
-                    <p>お名前：<input type="text" name="name" require></p>
+                    <p>メールアドレス：<input type="email" name="email" required></p>
+                    <p>パスワード：<input type="password" name="password" required></p>
+                    <p>お名前：<input type="text" name="name" required></p>
                     <p>性別：
                     <label><input type="radio" name="gender" value="1" />男</label>
                     <label><input type="radio" name="gender" value="2" />女</label>

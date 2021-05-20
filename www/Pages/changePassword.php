@@ -21,9 +21,9 @@ include('./commonParts/header.php');
          <main>
             <h2>パスワード変更</h2>
                 <form action="" method="post">
-                    <p>現在のパスワード：<input type="password" name="password" require></p>
-                    <p>新しいパスワード：<input type="password" name="password" require></p>
-                    <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="password" require></p>
+                    <p>現在のパスワード：<input type="password" name="password" required></p>
+                    <p>新しいパスワード：<input type="password" name="password" required></p>
+                    <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="password" required></p>
                     <p><input type="submit" name="submit" value="変更"></p>
                 </form>
          </main>
