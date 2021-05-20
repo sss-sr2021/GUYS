@@ -13,13 +13,13 @@
     require_once './commonParts/functions.php';
 ?>
 <?php
-$pageTitle = "ログイン";
-$h1 ="ログイン";
+$pageTitle = "アカウント作成";
+$h1 ="アカウント作成";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
          <main>
-            <h2>アカウント作成フォーム</h2>
+            <h2>アカウント作成</h2>
                 <form action="" method="post">
                     <p>メールアドレス：<input type="email" name="email" require></p>
                     <p>パスワード：<input type="password" name="password" require></p>
