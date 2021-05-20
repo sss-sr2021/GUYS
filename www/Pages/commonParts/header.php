@@ -3,9 +3,10 @@
  * header.php :ヘッダー部分の共通化
  * 
  * Author:伊藤明洋
- * Version :0.0.1
+ * Version :0.0.2
  * create :2021.05.20
  * Update :2021.05.20 伊藤
+ * Update :2021.05.20 秦(<script></script>の追加)
  * 
  * 
 */

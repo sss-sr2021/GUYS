@@ -1,6 +1,6 @@
 <?php
 /*
- * createAccount.php :管理者画面
+ * admin.php :管理者画面
  * 
  * Author:秦伊吹
  * Version :0.0.1

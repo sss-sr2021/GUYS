@@ -1,6 +1,6 @@
 <?php
 /*
- * createAccount.php :運営会社画面
+ * company.php :運営会社画面
  * 
  * Author:秦伊吹
  * Version :0.0.1
