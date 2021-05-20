@@ -18,8 +18,31 @@ $h1 ="ランキング";
 include('./commonParts/header.php');
 ?>
     <div class='container'>
+    <script src="/jquery-3.6.0.js"></script>
+        <script>
+            $(function(){
+                $("#weekly").click(function(){
+                    $("h2").html("週間ランキング");
+                });
+            });
+            $(function(){
+                $("#monthly").click(function(){
+                    $("h2").html("月間ランキング");
+                });
+            });
+            $(function(){
+                $("#yearly").click(function(){
+                    $("h2").html("年間ランキング");
+                });
+            });
+            $(function(){
+                $("#total").click(function(){
+                    $("h2").html("累計ランキング");
+                });
+            });
+        </script>
         <main>
-            <h2>ランキング</h2>
+            <h2>週間ランキング</h2>
                 <label for="spanButton">
                     <button name="spanButton" id="weekly">週間</button>
                     <button name="spanButton" id="monthly">月間</button>
