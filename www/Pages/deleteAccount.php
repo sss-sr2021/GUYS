@@ -1,6 +1,6 @@
 <?php
 /*
- * login.php :アカウント削除画面
+ * deleteAccount.php :アカウント削除画面
  * 
  * Author:伊藤明洋
  * Version :0.0.1
@@ -22,7 +22,10 @@ include('./commonParts/header.php');
             <h2>アカウント削除</h2>
                 <form action="" method="post">
                     <p>アカウントを削除します。</p>
-                    <p><input type="submit" name="delete" value="削除"></p>
+                    <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                <script>
+                    alert('削除しました。');
+                </script>
                 </form>
          </main>
      </div>

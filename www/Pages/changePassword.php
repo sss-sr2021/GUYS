@@ -1,6 +1,6 @@
 <?php
 /*
- * login.php :パスワード変更画面
+ * changePassword.php :パスワード変更画面
  * 
  * Author:伊藤明洋
  * Version :0.0.1

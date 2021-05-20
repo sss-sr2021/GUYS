@@ -1,6 +1,6 @@
 <?php
 /*
- * login.php :プロフィール情報変更画面
+ * changeProfile.php :プロフィール情報変更画面
  * 
  * Author:伊藤明洋
  * Version :0.0.1
