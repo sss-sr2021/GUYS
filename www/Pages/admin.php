@@ -40,7 +40,10 @@ include('./commonParts/header.php');
                         <td></td>
                     </tr>
                 </table>
-                <input type="submit" name="delete" value="削除">
+                <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                <script>
+                    alert('削除しました。');
+                </script>
         </main>
     </div>
 <?php
