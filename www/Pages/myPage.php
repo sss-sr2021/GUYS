@@ -1,11 +1,11 @@
 <?php
 /*
- * login.php :マイページ画面
+ * myPage.php :マイページ画面
  * 
  * Author:伊藤明洋
  * Version :0.0.1
  * create :2021.05.20
- * Update :2021.05.20 伊藤
+ * Update :2021.05.20 花岡
  * 
  * 
 */
@@ -40,19 +40,19 @@ include('./commonParts/header.php');
                         ・〇〇km<br />
                         ・〇〇級
                     <p>●階級一覧</p>
-                        <select name='rank'>
-                            <option value='1'>0km → お散歩級</option>
-                            <option value='2'>42km → フルマラソン級</option>
-                            <option value='3'>200km → 琵琶湖１周級</option>
-                            <option value='4'>500km → 北海道１周級</option>
-                            <option value='5'>1200km → 四国１周級</option>
-                            <option value='6'>2500km → 日本縦断級</option>
-                            <option value='7'>6400km → アマゾン川級</option>
-                            <option value='8'>8800km → 万里の長城級</option>
-                            <option value='9'>1万2千km → 日本１周級</option>
-                            <option value='10'>4万km → 地球１周級</option>
-                            <option value='11'>36万km → 月まで級</option>
-                        </select>
+                        <ul name='rank'>
+                            <li>0km → お散歩級</li>
+                            <li>42km → フルマラソン級</li>
+                            <li>200km → 琵琶湖１周級</li>
+                            <li>500km → 北海道１周級</li>
+                            <li>1200km → 四国１周級</li>
+                            <li>2500km → 日本縦断級</li>
+                            <li>6400km → アマゾン川級</li>
+                            <li>8800km → 万里の長城級</li>
+                            <li>1万2千km → 日本１周級</li>
+                            <li>4万km → 地球１周級</li>
+                            <li>36万km → 月まで級</li>
+                        </ul>
                 </div>
          </main>
      </div>
