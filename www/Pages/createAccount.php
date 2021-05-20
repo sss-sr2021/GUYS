@@ -25,7 +25,7 @@ include('./commonParts/header.php');
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p>お名前：<input type="text" name="name" required></p>
                     <p>性別：
-                    <label><input type="radio" name="gender" value="1" />男</label>
+                    <label><input type="radio" name="gender" value="1" required/>男</label>
                     <label><input type="radio" name="gender" value="2" />女</label>
                     <label><input type="radio" name="gender" value="3" />その他</label>
                     </p>
