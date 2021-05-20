@@ -60,3 +60,10 @@ function getLoginUser($where=[]){
         return $_SESSION['logined'];
     }
 }
+
+function createAccount(){
+    $dbh = dbInit();
+    $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列の中からemailの列を検索している
+            $exc = $sth->execute([$key => $value]);
+            $rows = $sth->fetchAll();
+}
