@@ -13,7 +13,8 @@
     require_once './commonParts/functions.php';
     session_start();
     $email=filter_input(INPUT_POST, 'email');
-    $pass=filter_input(INPUT_POST, 'password');
+    $pass0=filter_input(INPUT_POST, 'password');
+    $pass=password_hash($pass0,PASSWORD_DEFAULT);
     $name=filter_input(INPUT_POST, 'name');
     $gender=filter_input(INPUT_POST, 'gender');
     if(!empty($_POST['create'])){
