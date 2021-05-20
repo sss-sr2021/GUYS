@@ -12,9 +12,11 @@
 
     require_once './commonParts/functions.php';
     session_start();
-    $user = $_SESSION['logined'];  //セッションにあるユーザー情報
+    $ok=false;
+    $a=1; //セッションがなくても動作するか確認するための変数（後々消す）
+    // $user = $_SESSION['logined'];  //セッションにあるユーザー情報
 
-    //パスワードを基準にして名前と性別を変更
+    //セッションのIDとDBのIDを基準にして名前と性別を変更
     if(!empty($_POST['change'])){  //もしsubmitにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         $sth = $dbh-> prepare(  //passが同じならパスワードを変更する
@@ -27,7 +29,7 @@
              //'pass' => password_hash(filter_input(INPUT_POST,'password'),PASSWORD_DEFAULT), //:pass入力された値を入れる、暗号化も
              'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
          ]);
-         echo("変更しました。"); //後々ここにアラートを追加予定
+        $ok=true;
     }
     else{
         "";
@@ -53,8 +55,14 @@ include('./commonParts/header.php');
                     <p><input type="submit" name="change" value="変更"></p>
                     <!-- セッションのユーザーIDをhiddenで取ってくる -->
                     <p><br />
-                    <input type="hidden" name="id" value="<?= $user["id"] ?>"/></p>
+                    <input type="hidden" name="id" value="<?= $a/*$user["id"]*/ ?>"/></p>
                 </form>
+                <script>
+                    //変更した場合のみアラート表示
+                    <?php if($ok){ ?>  //$okがtrueの時だけアラート
+                    alert('変更しました'); 
+                    <?php } ?>
+                </script>
          </main>
      </div>
 <?php
