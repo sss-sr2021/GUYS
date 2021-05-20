@@ -19,6 +19,7 @@
     -->
  <head>
     <meta charset="utf-8">
+    <script src="/jquery-3.6.0.js"></script>
 </head>
  <title><?= $pageTitle ?></title>
  <body>
