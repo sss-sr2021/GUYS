@@ -9,8 +9,20 @@
  * 
  * 
 */
-
     require_once './commonParts/functions.php';
+    session_start();
+        $email=filter_input(INPUT_POST, 'email');
+        $pass=filter_input(INPUT_POST, 'password');
+    if(!empty($_POST['submit'])){
+        $dbh = dbInit();
+        $user = getLoginUser(['email' => $email]);//usesテーブルの中のすべての列の中からemailの列を検索している
+        //print_r($user);
+            if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、setting.phpに飛ぶ
+                header('Location:myPage.php');
+            }else{
+                echo 'ログインできません';
+            }
+    }
 ?>
 <?php
 $pageTitle = "ログイン";
