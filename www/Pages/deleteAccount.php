@@ -51,6 +51,7 @@ include('./commonParts/header.php');
         //削除した場合のみアラート表示
             <?php if($ok){ ?>  //$okがtrueの時だけアラート
             alert('削除しました'); 
+            location.href = 'myPage.php';
             <?php } ?>
         </script>
 <?php

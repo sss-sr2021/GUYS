@@ -57,7 +57,8 @@ include('./commonParts/header.php');
                 <script>
                     //変更した場合のみアラート表示
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
-                    alert('変更しました'); 
+                    alert('変更しました')
+                    location.href = 'myPage.php';
                     <?php } ?>
                 </script>
          </main>
