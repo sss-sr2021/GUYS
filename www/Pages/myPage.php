@@ -11,6 +11,8 @@
 */
 
     require_once './commonParts/functions.php';
+    session_start();
+    $user = $_SESSION['logined'];
 ?>
 <?php
 $pageTitle = "マイページ";
@@ -19,7 +21,9 @@ include('./commonParts/header.php');
 ?>
      <div class='container'>
          <main>
-            <h2>マイページ</h2>
+            <h2>
+                <?= $user['name']?>さん
+            </h2>
                 <div class="MENU">
                     <h3>MENU</h3>
                     <a href="top.php">▶トップページ</a><br />
