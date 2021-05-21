@@ -21,7 +21,7 @@
     $new_email=filter_input(INPUT_POST, 'email');
     $new_email2=filter_input(INPUT_POST, 'email2');
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
-    if(!empty($_POST['change'])){ //もしsubmitにの値が空じゃなければ以下を実行する
+    if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
             if(password_verify($pass,$user['pass'])){ //passwordを照合して一致すれば、以下を実行
                 if(@$new_email == @$new_email2){ //新しいメールアドレスともう一度入力されたメールアドレスを照合して一致すれば、以下を実行
@@ -30,7 +30,7 @@
                 );
                 $ret = $sth->execute([
                      'email' => filter_input(INPUT_POST, 'email'),  //:nameは入力された値を入れる
-                     'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
+                     'id' => $user["id"]  //:idはセッションにある値を入れる
                  ]);
                 $ok=true; //成功したので、trueにする。
                 }
@@ -58,9 +58,6 @@ include('./commonParts/header.php');
                     <p>新しいメールアドレス：<br /> （確認のためもう一度） <input type="email" name="email2" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="change" value="変更"></p>
-                    <!-- セッションのユーザーIDをhiddenで取ってくる -->
-                    <p><br />
-                    <input type="hidden" name="id" value="<?= $user["id"] ?>"/></p>
                 </form>
                 <script>
                     //変更した場合のみアラート表示

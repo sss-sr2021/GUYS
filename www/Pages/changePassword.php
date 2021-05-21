@@ -18,24 +18,24 @@
     session_start();
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $pass=filter_input(INPUT_POST, 'password');
-    $email=filter_input(INPUT_POST, 'email');
-    $email2=filter_input(INPUT_POST, 'email2');
+    $new_password=filter_input(INPUT_POST, 'new_password');
+    $new_password2=filter_input(INPUT_POST, 'new_password2');
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
-    if(!empty($_POST['change'])){ //もしsubmitにの値が空じゃなければ以下を実行する
+    if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
             if(password_verify($pass,$user['pass'])){ //passwordを照合して一致すれば、以下を実行
-                if(@$new_email = @$new_email2){ //新しいメールアドレスともう一度入力されたメールアドレスを照合して一致すれば、以下を実行
+                if(@$new_password == @$new_password2){ //新しいパスワードともう一度入力されたパスワードを照合して一致すれば、以下を実行
                 $sth = $dbh-> prepare(  //idが同じならメールアドレスを変更する
-                    'UPDATE users SET email = :email WHERE id = :id'
+                    'UPDATE users SET pass = :pass WHERE id = :id'
                 );
                 $ret = $sth->execute([
-                     'email' => filter_input(INPUT_POST, 'email'),  //:nameは入力された値を入れる
-                     'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
+                     'pass' => password_hash($new_password,PASSWORD_DEFAULT), //入力された値を入れる、暗号化も
+                     'id' => $user["id"]  //:idはセッションにある値を入れる
                  ]);
                 $ok=true; //成功したので、trueにする。
                 }
                 else{
-                    echo '同じメールアドレスを入力してください。';
+                    echo '同じパスワードを入力してください。';
                 }
             }else{
                 echo '変更に失敗しました。';

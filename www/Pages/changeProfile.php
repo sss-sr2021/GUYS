@@ -3,7 +3,7 @@
  * changeProfile.php :プロフィール情報変更画面
  * 
  * Author:伊藤明洋
- * Version :0.1.1
+ * Version :0.1.1 //パスワードでの照合を削除
  * create :2021.05.20
  * Update :2021.05.20 伊藤
  * $user :セッションにあるユーザー情報
@@ -17,7 +17,7 @@
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
 
     //セッションのIDとDBのIDを基準にして名前と性別を変更
-    if(!empty($_POST['change'])){  //もしsubmitにの値が空じゃなければ以下を実行する
+    if(!empty($_POST['change'])){  //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         $sth = $dbh-> prepare(  //idが同じなら名前と性別を変更する
             'UPDATE users SET name = :name , gender = :gender WHERE /*pass = :pass and*/ id = :id'
@@ -27,7 +27,7 @@
              'gender' => filter_input(INPUT_POST,'gender'), //:genderは選択された値を入れる
              //パスワードの確認欄は削除
              //'pass' => password_hash(filter_input(INPUT_POST,'password'),PASSWORD_DEFAULT), //:pass入力された値を入れる、暗号化も
-             'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
+             'id' => $user["id"]  //:idはセッションにある値を入れる
          ]);
         $ok=true; //成功したので、trueにする。
     }
@@ -53,9 +53,6 @@ include('./commonParts/header.php');
                     </p>
                     <!-- <p>パスワード：<input type="password" name="password" required></p> -->
                     <p><input type="submit" name="change" value="変更"></p>
-                    <!-- セッションのユーザーIDをhiddenで取ってくる -->
-                    <p><br />
-                    <input type="hidden" name="id" value="<?= $user["id"] ?>"/></p>
                 </form>
                 <script>
                     //変更した場合のみアラート表示
