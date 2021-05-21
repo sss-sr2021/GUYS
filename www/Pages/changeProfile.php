@@ -13,13 +13,12 @@
     require_once './commonParts/functions.php';
     session_start();
     $ok=false;
-    $a=1; //セッションがなくても動作するか確認するための変数（後々消す）
-    // $user = $_SESSION['logined'];  //セッションにあるユーザー情報
+    $user = $_SESSION['logined'];  //セッションにあるユーザー情報
 
     //セッションのIDとDBのIDを基準にして名前と性別を変更
     if(!empty($_POST['change'])){  //もしsubmitにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
-        $sth = $dbh-> prepare(  //passが同じならパスワードを変更する
+        $sth = $dbh-> prepare(  //idが同じなら名前と性別を変更する
             'UPDATE users SET name = :name , gender = :gender WHERE /*pass = :pass and*/ id = :id'
         );
         $ret = $sth->execute([
@@ -55,7 +54,7 @@ include('./commonParts/header.php');
                     <p><input type="submit" name="change" value="変更"></p>
                     <!-- セッションのユーザーIDをhiddenで取ってくる -->
                     <p><br />
-                    <input type="hidden" name="id" value="<?= $a/*$user["id"]*/ ?>"/></p>
+                    <input type="hidden" name="id" value="<?= $user["id"] ?>"/></p>
                 </form>
                 <script>
                     //変更した場合のみアラート表示
