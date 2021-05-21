@@ -7,9 +7,12 @@
  * create :2021.05.20
  * Update :2021.05.20 伊藤
  * Update :2021.05.20 秦(<script></script>の追加)
- * 
+ * Update :2021.05.21 秦(ログイン/ログアウトの分岐追加)
  * 
 */
+
+require_once './commonParts/functions.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +36,7 @@
                     <ul>
                         <li><a href="top.php">TOP</a></li>
                         <li><a href="myPage.php">マイページ</a></li>
-                        <li><a href="login.php">ログイン/ログアウト</a></li>
+                        <li><a href="./commonParts/loginout.php">ログイン/ログアウト</a></li>
                     </ul>
                 </nav>
         </header>

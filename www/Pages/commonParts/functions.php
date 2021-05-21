@@ -5,8 +5,8 @@ function.php:共通関数
 
 Author:秦伊吹
 Version:0.0.1
-Created:2021.05.20
-updated:
+Created:2021.05.20（）
+updated:2021.05.21（loginout関数、logout関数の追加）
 
 */
 
@@ -54,7 +54,7 @@ function getLoginUser($where=[]){
             $exc = $sth->execute([$key => $value]);
             $rows = $sth->fetchAll();
         }
-            $_SESSION['logined'] = $rows[0];    //$_SESSION['logined']にusersとuser_mataの内容を入れる。
+            $_SESSION['logined'] = $rows[0];    
             return $_SESSION['logined'];
     }else{                                      //もしセッション変数の中身が存在したら、セッション変数から中身を取り出す。
         return $_SESSION['logined'];
@@ -66,4 +66,25 @@ function createAccount(){
     $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列の中からemailの列を検索している
             $exc = $sth->execute([$key => $value]);
             $rows = $sth->fetchAll();
+}
+
+/*
+logout関数：ログアウト、セッションの中身を空にする。
+*/
+
+function logout(){
+    $_SESSION['logined'] = null; //セッション変数の値をnullにする。
+}
+
+/*
+loginout関数：ログアウト、セッションの中身を空にする。
+*/
+
+function loginout(){
+    if(!empty($_SESSION['logined'])){
+        logout();
+        header('Location:../top.php');
+    }else{
+        header('Location:../login.php');
+    }
 }

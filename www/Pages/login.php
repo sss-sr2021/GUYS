@@ -9,6 +9,7 @@
  * 
  * 
 */
+
     require_once './commonParts/functions.php';
     session_start();
         $email=filter_input(INPUT_POST, 'email');
@@ -16,12 +17,13 @@
     if(!empty($_POST['submit'])){
         $dbh = dbInit();
         $user = getLoginUser(['email' => $email]);//usesテーブルの中のすべての列の中からemailの列を検索している
-            if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、setting.phpに飛ぶ
+            if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、myPage.phpに飛ぶ
                 header('Location:myPage.php');
             }else{
                 echo 'ログインできません';
             }
     }
+
 ?>
 <?php
 $pageTitle = "ログイン";
