@@ -54,8 +54,26 @@ function getLoginUser($where=[]){
             $exc = $sth->execute([$key => $value]);
             $rows = $sth->fetchAll();
         }
-            $_SESSION['logined'] = $rows[0];    
-            return $_SESSION['logined'];
+            //mileageテーブルの値も取得
+            @$User_id = @$rows[0]['id']; 
+
+            $sth = $dbh->prepare(
+                "SELECT * FROM mileage WHERE user_id=:user_id"
+            );
+            $exc = $sth->execute(
+                ["user_id" => $User_id]
+            );
+            $rows2 = $sth -> fetchALL();
+    
+            $rows3 = [];  // $rows3を空の配列として設定
+            foreach($rows2 as $row) {
+                $key = $row['date'];    //dateを渡す
+                $value = $row['mileage'];  //mileageを渡す
+                $rows3[$key] = $value;  //dateをkeyとしてmileageを渡す
+            }
+
+        $_SESSION['logined'] = $rows[0] + @$rows3;    
+        return $_SESSION['logined'];
     }else{                                      //もしセッション変数の中身が存在したら、セッション変数から中身を取り出す。
         return $_SESSION['logined'];
     }
@@ -67,6 +85,36 @@ function createAccount(){
             $exc = $sth->execute([$key => $value]);
             $rows = $sth->fetchAll();
 }
+
+
+/*
+getMileage関数：データベースへの接続
+$_SESSION['mileage']：セッション変数
+$User_id : usersのid
+*/
+/* 一回封印
+function getMileage(){
+    @$User_id = @$rows[0]['id']; 
+
+    $sth = $dbh->prepare(
+        "SELECT * FROM mileage WHERE user_id=:user_id"
+    );
+    $exc = $sth->execute(
+        ["user_id" => $User_id]
+    );
+    $rows2 = $sth -> fetchALL();
+
+   $rows3 = [];  // $rows3を空の配列として設定
+    foreach($rows2 as $row) {
+        $key = $row['date'];    //dateを渡す
+        $value = $row['mileage'];  //mileageを渡す
+        $rows3[$key] = $value;  //dateをkeyとしてmileageを渡す
+    }
+
+    $_SESSION["mileage"] = @$rows3;  //セッション変数に保持
+    return $_SESSION["mileage"];
+}
+*/
 
 /*
 logout関数：ログアウト、セッションの中身を空にする。

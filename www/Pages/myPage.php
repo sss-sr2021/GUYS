@@ -12,7 +12,37 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];
+    $today = date("Y-m-d");
+    if(!empty($_POST['submit'])){ //もしsubmitが押されれば以下を実行する
+        $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
+        if(!empty($_SESSION["logined"][$today]) || $_SESSION["logined"][$today] ===''){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
+            $sth = $dbh-> prepare(
+                'UPDATE mileage SET mileage = :mileage WHERE user_id = :user_id and date = :date'  //条件が二つあるときはandを使う 
+            );
+            $ret = $sth->execute([
+                'date' => $today,
+                'mileage' => filter_input(INPUT_POST,'mileage'),
+                'user_id' => filter_input(INPUT_POST,$user['id'])
+            ]);
+        }
+        else{
+            $sth = $dbh-> prepare(
+                "INSERT INTO mileage(user_id,date,mileage)values(:user_id,:date,:mileage)" //mileageテーブルのuser_id,date,mileageを追加
+            );
+            $ret = $sth->execute([
+                'date' => $today, //dateに今日の日付を入れる
+                'mileage' => filter_input(INPUT_POST,$name),  //mileageに入力された値を入れる
+                'user_id' => filter_input(INPUT_POST,$user['id']) //user_idにidを値を入れる
+            ]);
+        }
+        $_SESSION["logined"][$today] = filter_input(INPUT_POST,'mileage');   //sessionに日付を入れる、もしmileageの値が空だったらインサートだけ起こるから値を入れる
+        $ok=true; //成功したので、trueにする。
+    }
+    else{
+        "";
+    }
 ?>
 <?php
 $pageTitle = "マイページ";
@@ -36,7 +66,8 @@ include('./commonParts/header.php');
                 <div class="mile">
                     <h3>入力フォーム</h3>
                     <p>今日のマイル</p>
-                    <p><input type="number" name="mile">km</p>
+                    <p><input type="number" name="mileage">km</p>
+                    <p><input type="submit" name="submit" value="送信"></p>
                 </div>
                 <div class="user">
                     <!--  後々データベースからもってくる、下は仮 階級はif文？？-->
@@ -60,6 +91,13 @@ include('./commonParts/header.php');
                 </div>
          </main>
      </div>
+        <script>
+            //変更した場合のみアラート表示
+            <?php if($ok){ ?>  //$okがtrueの時だけアラート
+            alert('変更しました'); 
+            location.href = 'myPage.php';
+            <?php } ?>
+        </script>
 <?php
 include('./commonParts/footer.php');
 ?>
