@@ -7,12 +7,13 @@
  * create :2021.05.20
  * Update :2021.05.20 伊藤
  * $user :セッションにあるユーザー情報
+ * $ok :成功した場合にtrueを入れ、trueの場合のみアラートを表示させるための変数
  * 
 */
 
     require_once './commonParts/functions.php';
     session_start();
-    $ok=false;
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
 
     //セッションのIDとDBのIDを基準にして名前と性別を変更
@@ -28,7 +29,7 @@
              //'pass' => password_hash(filter_input(INPUT_POST,'password'),PASSWORD_DEFAULT), //:pass入力された値を入れる、暗号化も
              'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
          ]);
-        $ok=true;
+        $ok=true; //成功したので、trueにする。
     }
     else{
         "";

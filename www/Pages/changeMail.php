@@ -10,12 +10,13 @@
  * $pass :入力されたパスワード
  * $new_email :新しいパスワード
  * $new_email2 :新しいパスワード(確認)
+ * $ok :成功した場合にtrueを入れ、trueの場合のみアラートを表示させるための変数
  * 
 */
 
     require_once './commonParts/functions.php';
     session_start();
-    $ok=false;
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $pass=filter_input(INPUT_POST, 'password');
     $new_email=filter_input(INPUT_POST, 'email');
     $new_email2=filter_input(INPUT_POST, 'email2');
@@ -31,7 +32,7 @@
                      'email' => filter_input(INPUT_POST, 'email'),  //:nameは入力された値を入れる
                      'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
                  ]);
-                $ok=true;
+                $ok=true; //成功したので、trueにする。
                 }
                 else{
                     echo '同じメールアドレスを入力してください。';

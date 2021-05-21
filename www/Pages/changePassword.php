@@ -6,13 +6,17 @@
  * Version :0.0.1
  * create :2021.05.20
  * Update :2021.05.20 伊藤
- * 
+ * $user :セッションにあるユーザー情報
+ * $pass :入力されたパスワード
+ * $new_password :新しいパスワード
+ * $new_password2 :新しいパスワード(確認)
+ * $ok :成功した場合にtrueを入れ、trueの場合のみアラートを表示させるための変数
  * 
 */
 
     require_once './commonParts/functions.php';
     session_start();
-    $ok=false;
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $pass=filter_input(INPUT_POST, 'password');
     $email=filter_input(INPUT_POST, 'email');
     $email2=filter_input(INPUT_POST, 'email2');
@@ -28,7 +32,7 @@
                      'email' => filter_input(INPUT_POST, 'email'),  //:nameは入力された値を入れる
                      'id' => filter_input(INPUT_POST,'id')  //:idはhiddenで取ってきた値を入れる
                  ]);
-                $ok=true;
+                $ok=true; //成功したので、trueにする。
                 }
                 else{
                     echo '同じメールアドレスを入力してください。';
@@ -55,6 +59,12 @@ include('./commonParts/header.php');
                     <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="new_password2" required></p>
                     <p><input type="submit" name="change" value="変更"></p>
                 </form>
+                <script>
+                    //変更した場合のみアラート表示
+                    <?php if($ok){ ?>  //$okがtrueの時だけアラート
+                    alert('変更しました'); 
+                    <?php } ?>
+                </script>
          </main>
      </div>
 <?php
