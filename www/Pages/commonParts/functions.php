@@ -6,7 +6,7 @@ function.php:共通関数
 Author:秦伊吹
 Version:0.0.1
 Created:2021.05.20（）
-updated:2021.05.21（loginout関数、logout関数の追加）
+updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
 
 */
 
@@ -86,5 +86,18 @@ function loginout(){
         header('Location:../top.php');
     }else{
         header('Location:../login.php');
+    }
+}
+
+
+/*
+myPageBi関数：マイページを押したときの分岐
+*/
+
+function myPageBi(){
+    if(!empty($_SESSION['logined'])){           //セッションの中身があったら
+        header('Location:../myPage.php');       //myPage.phpに移動
+    }else{                                      //セッションの中身がなければ
+    header('Location:../login.php');            //login.phpに移動
     }
 }

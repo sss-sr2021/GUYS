@@ -35,7 +35,7 @@ require_once './commonParts/functions.php';
                 <nav>
                     <ul>
                         <li><a href="top.php">TOP</a></li>
-                        <li><a href="myPage.php">マイページ</a></li>
+                        <li><a href="./commonParts/myPagebifurcation.php">マイページ</a></li>
                         <li><a href="./commonParts/loginout.php">ログイン/ログアウト</a></li>
                     </ul>
                 </nav>
