@@ -49,17 +49,14 @@ include('./commonParts/header.php');
                         <td><?= $row['pass'] ?></td>
                         <td></td>
                         <td><?= $row['point'] ?></td>
-                        <td> <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')"></td>
+                        <td> <input type="submit" name="delete" value="<?= $row['id'] ?>" onclick="alert('本当に削除しますか？')"></td>
                     </tr>
                         <?php
                     endforeach;
                     ?>
                 </table>
+                <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
                 <script>
-                    var len = $("input[type="submit"]").length;
-                    $(function(){
-                        $("input[type="submit"]").eq(0).click
-                    });
                     alert('削除しました。');
                 </script>
         </main>
