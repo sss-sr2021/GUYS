@@ -11,6 +11,22 @@
 */
 
     require_once './commonParts/functions.php';
+    session_start();
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
+    $user = $_SESSION['logined'];
+    if(!empty($_POST['delete'])){
+        $dbh = dbInit();
+        $sth = $dbh-> prepare(
+            'DELETE FROM users WHERE id = :id'
+        );
+        $ret = $sth->execute([
+            'id' => $user["id"]  //:idはセッションにある値を入れる
+        ]);
+        $ok=true; //成功したので、trueにする。
+    }
+    else{
+        "";
+    }
 ?>
 <?php
 $pageTitle = "アカウント削除";
@@ -23,14 +39,20 @@ include('./commonParts/header.php');
                 <form action="" method="post">
                     <p>アカウントを削除します。</p>
                     <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                    <!--
                 <script>
                     alert('削除しました。');
                 </script>
+                -->
                 </form>
          </main>
      </div>
-     <script>
-     </script>
+        <script>
+        //削除した場合のみアラート表示
+            <?php if($ok){ ?>  //$okがtrueの時だけアラート
+            alert('削除しました'); 
+            <?php } ?>
+        </script>
 <?php
 include('./commonParts/footer.php');
 ?>
