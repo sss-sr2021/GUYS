@@ -11,6 +11,13 @@
 */
 
     require_once './commonParts/functions.php';
+    session_start();
+        $dbh = dbInit();
+        $sql = "SELECT * FROM users";
+        $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列を検索
+        $exc = $sth->execute();
+        $rows = $sth->fetchAll();
+        
 ?>
 <?php
 $pageTitle = "管理者ページ";
@@ -20,7 +27,7 @@ include('./commonParts/header.php');
     <div class='container'>
         <main>
             <h2>アカウント情報一覧</h2>
-                <table>
+                <table border="1" id="table">
                     <tr>
                         <th>ID</th>
                         <th>名前</th>
@@ -29,19 +36,30 @@ include('./commonParts/header.php');
                         <th>パスワード</th>
                         <th>マイレージ</th>
                         <th>所持ポイント</th>
+                        <th>削除</th>
                     </tr>
+                    <?php
+                    foreach($rows as $row):
+                        ?>
                     <tr>
+                        <td><?= $row['id'] ?></td>
+                        <td><?= $row['name'] ?></td>
+                        <td><?= $row['gender'] ?></td>
+                        <td><?= $row['email'] ?></td>
+                        <td><?= $row['pass'] ?></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $row['point'] ?></td>
+                        <td> <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')"></td>
                     </tr>
+                        <?php
+                    endforeach;
+                    ?>
                 </table>
-                <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
                 <script>
+                    var len = $("input[type="submit"]").length;
+                    $(function(){
+                        $("input[type="submit"]").eq(0).click
+                    });
                     alert('削除しました。');
                 </script>
         </main>
