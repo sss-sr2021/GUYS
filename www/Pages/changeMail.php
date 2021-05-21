@@ -20,6 +20,7 @@
     $pass=filter_input(INPUT_POST, 'password');
     $new_email=filter_input(INPUT_POST, 'email');
     $new_email2=filter_input(INPUT_POST, 'email2');
+    $error_message="";
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
     if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
@@ -35,10 +36,10 @@
                 $ok=true; //成功したので、trueにする。
                 }
                 else{
-                    echo '同じメールアドレスを入力してください。';
+                    $error_message .= '同じメールアドレスを入力してください。<br />';
                 }
             }else{
-                echo '変更に失敗しました。';
+                $error_message .= '変更に失敗しました。';
             }
     }
     else{
@@ -53,6 +54,7 @@ include('./commonParts/header.php');
      <div class='container'>
          <main>
             <h2>メールアドレス変更</h2>
+            <?= $error_message ?>
                 <form action="" method="post">
                     <p>新しいメールアドレス：<input type="email" name="email" required></p>
                     <p>新しいメールアドレス：<br /> （確認のためもう一度） <input type="email" name="email2" required></p>

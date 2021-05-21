@@ -20,6 +20,7 @@
     $pass=filter_input(INPUT_POST, 'password');
     $new_password=filter_input(INPUT_POST, 'new_password');
     $new_password2=filter_input(INPUT_POST, 'new_password2');
+    $error_message="";
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
     if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
@@ -35,10 +36,10 @@
                 $ok=true; //成功したので、trueにする。
                 }
                 else{
-                    echo '同じパスワードを入力してください。';
+                    $error_message .= '同じパスワードを入力してください。';
                 }
             }else{
-                echo '変更に失敗しました。';
+                $error_message .= '変更に失敗しました。';
             }
     }
     else{
@@ -53,6 +54,7 @@ include('./commonParts/header.php');
      <div class='container'>
          <main>
             <h2>パスワード変更</h2>
+            <?= $error_message ?>
                 <form action="" method="post">
                     <p>現在のパスワード：<input type="password" name="password" required></p>
                     <p>新しいパスワード：<input type="password" name="new_password" required></p>
