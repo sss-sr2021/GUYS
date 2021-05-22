@@ -5,7 +5,7 @@
  * Author:伊藤明洋
  * Version :0.0.1
  * create :2021.05.19
- * Update :2021.05.20 伊藤
+ * Update :2021.05.22 花岡//同一メールアドレスで複数のアカウント作成はできないように修正
  * 
  * 
 */
@@ -17,14 +17,23 @@
     $pass=password_hash($pass0,PASSWORD_DEFAULT);
     $name=filter_input(INPUT_POST, 'name');
     $gender=filter_input(INPUT_POST, 'gender');
+    $message="";//エラーメッセージ
     if(!empty($_POST['create'])){
         $dbh = dbInit();
         // $op = "INSERT INTO users(email,pass,name,gender)VALUES('$email','$pass','$name','$gender')";
         // var_dump($op);
-        $sth = $dbh->prepare("INSERT INTO users(email,pass,name,gender)VALUES('$email','$pass','$name','$gender')"); 
-        
-        $exc = $sth->execute();
-        $rows = $sth->fetchAll();
+        $emailFromUsers="SELECT email FROM users";
+        foreach($dbh->query($emailFromUsers) as $row){
+            if($row['email']==filter_input(INPUT_POST,'email')){//usersテーブルのメールアドレスと入力されたメールアドレスが一致すれば
+                $message.="そのメールアドレスは既に存在します。";//エラーメッセージの追加
+            }
+        }
+        if(empty($message)){//エラーメッセージがなければ
+            //アカウント作成処理
+            $insertSql="INSERT INTO users(email,pass,name,gender)VALUES('$email','$pass','$name','$gender')";
+            dbExe($insertSql);
+            $message="アカウントを作成しました。";
+        }
     }
 ?>
 <?php
@@ -35,6 +44,7 @@ include('./commonParts/header.php');
      <div class='container'>
          <main>
             <h2>アカウント作成</h2>
+            <?= $message ?>
                 <form action="createAccount.php" method="post">
                     <p>メールアドレス：<input type="email" name="email" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>

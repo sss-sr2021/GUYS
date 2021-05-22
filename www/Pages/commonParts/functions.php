@@ -7,6 +7,7 @@ Author:秦伊吹
 Version:0.0.1
 Created:2021.05.20（）
 updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
+        2021.05.22 花岡//(dbExe関数の追加)
 
 */
 
@@ -35,6 +36,21 @@ function dbInit(){
                 ]
                 );
                 return $dbh;
+}
+
+/*
+*dbExe($sql)//SQL文を実行する。$sql:SQL文
+*return $rows:実行結果
+*Author:花岡
+*
+*/
+
+function dbExe($sql){
+    $dbh=dbInit();
+    $sth=$dbh->prepare($sql);
+    $exc=$sth->execute();
+    $rows=$sth->fetchAll();
+    return $rows;
 }
 
 /*

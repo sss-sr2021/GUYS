@@ -19,13 +19,7 @@
     require_once './commonParts/functions.php';
     @session_start();
     $dbh=dbInit();
-    function dbExe($sql){
-        $dbh=dbInit();
-        $sth=$dbh->prepare($sql);
-        $exc=$sth->execute();
-        $rows=$sth->fetchAll();
-        return $rows;
-    }
+    
     function ranking($span){
         //重複なしでuser_idをmileageテーブルから取得
         $disSql="SELECT DISTINCT user_id FROM mileage $span";
