@@ -28,8 +28,8 @@ require_once './commonParts/functions.php';
  <title><?= $pageTitle ?></title>
  <body>
      <div class='wrapper'>
-        <header>
-            <img src="" alt="ロゴ画像" />
+        <header style="">
+            <a href="top.php"><img src="../images/logo.png" alt="ロゴ画像" width="80px" height="80px"/></a>
             <h1><?= $h1 ?></h1>
             <a href ="createAccount.php">アカウント作成</a>
                 <nav>

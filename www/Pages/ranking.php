@@ -8,17 +8,17 @@
  * Update :2021.05.20 花岡
  * 
  * $_SESSION['span']//指定した期間
- * $_SESSION['sumId']//
  * 
+ * 関数
  * dbExe($sql)//SQL文を実行する。$sql:SQL文
+ * ranking($span)//指定した期間での、ユーザーIDと合計マイレージを取得。
+ *               //return Array([ユーザーID]=>合計マイレージ)
+ *              //$span:WHERE条件式
 */
 
     require_once './commonParts/functions.php';
     @session_start();
     $dbh=dbInit();
-    $today= date("Y-m-d");//今日の日付
-    $weekNum=date("w");//今日の曜日番号
-    print_r($today);
     function dbExe($sql){
         $dbh=dbInit();
         $sth=$dbh->prepare($sql);
@@ -27,26 +27,8 @@
         return $rows;
     }
     function ranking($span){
-
-    }
-
-    if(empty($_SESSION['span'])){
-        $_SESSION['span']="週間";
-    }
-
-    if(isset($_POST['weeklyButton'])) {
-        $_SESSION['span']="週間";
-    }
-    elseif(isset($_POST['monthlyButton'])) {
-        $_SESSION['span']="月間";
-    }
-    elseif(isset($_POST['yearlyButton'])) {
-        $_SESSION['span']="年間";
-    }
-    elseif(isset($_POST['totalButton'])) {
-        $_SESSION['span']="累計";
         //重複なしでuser_idをmileageテーブルから取得
-        $disSql="SELECT DISTINCT user_id FROM mileage";
+        $disSql="SELECT DISTINCT user_id FROM mileage $span";
             $dis=dbExe($disSql);
         //user_idの種類の回数だけforeachして$arr1に格納
             $arr1=[];
@@ -62,28 +44,96 @@
                 $arrRank[$v]=$sum2;
             }
             arsort($arrRank);
+            return $arrRank;
     }
+
+    if(empty($_SESSION['span'])){//デフォルトは週間
+        $_SESSION['span']="週間";
+    }
+    
+    if(isset($_POST['weeklyButton'])) {//週間ボタンが押されたとき
+        $_SESSION['span']="週間";
+    }
+    elseif(isset($_POST['monthlyButton'])) {//月間ボタンが押されたとき
+        $_SESSION['span']="月間";
+    }
+    elseif(isset($_POST['yearlyButton'])) {//年間ボタンが押されたとき
+        $_SESSION['span']="年間";
+    }
+    elseif(isset($_POST['totalButton'])) {//累計ボタンが押されたとき
+        $_SESSION['span']="累計";
+    }
+    //セッションの状態で分岐
+    switch($_SESSION['span']){
+        case "週間":
+            $weekNum=date("w");//今日の曜日番号
+            $todayWeek=date("Y-m-d",mktime(0,0,0,date("m"),date("d")-$weekNum,date("Y")));//今週の日曜日
+            $nextWeek=date("Y-m-d",mktime(0,0,0,date("m"),date("d")+(7-$weekNum),date("Y")));//来週の日曜日
+            $to=date("Y-m-d",strtotime("{$nextWeek} -1 day"));//今週末
+            $arrRank=ranking("WHERE DATE>='".$todayWeek."' AND DATE<'".$nextWeek."'");
+            $message="{$todayWeek}～{$to}の記録";
+            break;
+
+        case "月間":
+            $todayMonth=date("Y-m-d",mktime(0,0,0,date("m"),1,date("Y")));//今月の1日
+            $nextMonth=date("Y-m-d",mktime(0,0,0,date("m")+1,1,date("Y")));;//来月の1日 
+            $to=date("Y-m-d",strtotime("{$nextMonth} -1 day"));//今月末
+            $arrRank=ranking("WHERE DATE>='".$todayMonth."' AND DATE<'".$nextMonth."'");
+            $message="{$todayMonth}～{$to}の記録";
+            break;
+
+        case "年間":
+            $todayYear=date("Y-m-d",mktime(0,0,0,1,1,date("Y")));//今年の1月1日
+            $nextYear=date("Y-m-d",mktime(0,0,0,1,1,date("Y")+1));//来年の1月1日
+            $to=date("Y-m-d",strtotime("{$nextYear} -1 day"));//今年の12月31日
+            $arrRank=ranking("WHERE DATE>='".$todayYear."' AND DATE<'".$nextYear."'");
+            $message="{$todayYear}～{$to}の記録";
+            break;
+
+        case "累計":
+            $today=date("Y-m-d");
+            $arrRank=ranking("");
+            $message="{$today}までの記録";
+            break;
+    }
+
     $allRank=1;//順位
     $counter=0;//添え字カウンター
     //userテーブルに接続
     $usersSql="SELECT *  FROM users";
     $users=dbExe($usersSql);
-    //データベースから検索
+    //全ユーザーの名前とマイレージを配列$resultArrに格納
     $resultArr=[];
     foreach($arrRank as $k=>$v){
         foreach($users as $data){
-            if($allRank<11){
-                if($k==$data['id']){
-                    $resultArr[$counter]['rank']=$allRank;
-                    $resultArr[$counter]['name']=$data['name'];
-                    $resultArr[$counter]['mileage']=$v;
-                    $counter++;
-                    $allRank++;
-                }
+            if($k==$data['id']){
+                $resultArr[$counter]['id']=$k;
+                $resultArr[$counter]['rank']=$allRank;
+                $resultArr[$counter]['name']=$data['name'];
+                $resultArr[$counter]['mileage']=$v;
+                $counter++;
+                $allRank++;
             }
         }
     }
-    $resultArr=json_encode($resultArr);//JSONエンコード
+    //上位10名のデータの配列
+    $topTen=[];
+    for($i=0;$i<10;$i++){
+        if(isset($resultArr[$i])){
+            $topTen[$i]['id']=$resultArr[$i]['id'];
+            $topTen[$i]['rank']=$resultArr[$i]['rank'];
+            $topTen[$i]['name']=$resultArr[$i]['name'];
+            $topTen[$i]['mileage']=$resultArr[$i]['mileage'];
+        }
+    }
+    //$resultArrからログインユーザーの情報を検索
+    $userResult=[];
+    foreach($resultArr as $v){
+        if($_SESSION['logined']['id']==$v['id']){
+            $userResult['rank']=$v['rank'];
+            $userResult['mileage']=$v['mileage'];
+        }
+    }
 ?>
 <?php
 $pageTitle = "ランキング";
@@ -93,13 +143,6 @@ include('./commonParts/header.php');
     <div class='container'>
     <script src="/jquery-3.6.0.js"></script>
         <script>
-            var resultArr = JSON.parse('<?= $resultArr; ?>');  //JSONデコード
-            console.log(resultArr);
-        $(function(){
-            for(var i in resultArr){
-                $(".totalRank").append('<li><span class="rankingRank">'+resultArr[i].rank+'位</span><span class="rankingName">'+resultArr[i].name+'さん</span><span class="rankingMileage">'+resultArr[i].mileage+'km</span></li>');
-            }
-        });
         </script>
         <main>
             <h2><?= $_SESSION['span'] ?>ランキング</h2>
@@ -111,12 +154,28 @@ include('./commonParts/header.php');
                     <button type="submit" name="totalButton" id="total">累計</button>
                     </label>
                 </form>
-                <div class="yourRank">
-                    <p>あなたは<span class="rankingRank">位</span><span class="rankingMileage">km</span></p>
+                <div class="spanData">
+                    <p><?= $message ?></p>
                 </div>
+                <?php if($userResult<>null): ?><!-- 指定した期間内にログインユーザーのデータがあれば -->
+                    <div class="yourRank">
+                        <p>あなたは<span class="rankingRank"><?= $userResult['rank'] ?>位</span><span class="rankingMileage"><?= $userResult['mileage'] ?>km</span></p>
+                    </div>
+                <?php else:?><!-- 指定した期間内にログインユーザーのデータがなければ -->
+                    <div class="yourRank">
+                        <p>あなたのデータはありません。</p>
+                    </div>
+                <?php endif; ?><!-- if($userResult<>null): -->
                 <div class="totalRank">
-                    <ul>
-                    </ul>
+                    <?php if($topTen<>null): ?>
+                        <ul>
+                        <?php foreach($topTen as $v):?>
+                            <li><span class="rankingRank"><?=$v['rank']?>位</span><span class="rankingName"><?=$v['name']?>さん</span><span class="rankingMileage"><?=$v['mileage']?>km</span></li>
+                        <?php endforeach;?>
+                        </ul>
+                    <?php else:?>
+                        <p>ランキングデータがありません。</p>
+                    <?php endif; ?><!-- if($resultArr<>null): -->
                 </div>
         </main>
     </div>

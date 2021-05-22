@@ -3,9 +3,9 @@
  * login.php :ログイン画面
  * 
  * Author:秦伊吹
- * Version :0.0.1
+ * Version :0.0.2
  * create :2021.05.19
- * Update :2021.05.20 伊藤
+ * Update :2021.05.22 花岡//誤字修正
  * 
  * 
 */
@@ -16,7 +16,7 @@
         $pass=filter_input(INPUT_POST, 'password');
     if(!empty($_POST['submit'])){
         $dbh = dbInit();
-        $user = getLoginUser(['email' => $email]);//usesテーブルの中のすべての列の中からemailの列を検索している
+        $user = getLoginUser(['email' => $email]);//usersテーブルの中のすべての列の中からemailの列を検索している
             if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、myPage.phpに飛ぶ
                 header('Location:myPage.php');
             }else{
