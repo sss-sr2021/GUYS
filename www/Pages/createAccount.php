@@ -6,6 +6,7 @@
  * Version :0.0.1
  * create :2021.05.19
  * Update :2021.05.22 花岡//同一メールアドレスで複数のアカウント作成はできないように修正
+ *         2021.05.23 花岡//アカウント作成時、shop_infoテーブルにもデータを追加
  * 
  * 
 */
@@ -30,8 +31,10 @@
         }
         if(empty($message)){//エラーメッセージがなければ
             //アカウント作成処理
-            $insertSql="INSERT INTO users(email,pass,name,gender)VALUES('$email','$pass','$name','$gender')";
-            dbExe($insertSql);
+            dbExe("INSERT INTO users(email,pass,name,gender)VALUES('$email','$pass','$name','$gender')");//usersテーブル
+            $shopUserId=dbExe("SELECT id from users WHERE email='$email'");
+            $shopUserId=$shopUserId[0]['id'];
+            dbExe("INSERT INTO shop_info(user_id)VALUES('$shopUserId')");
             $message="アカウントを作成しました。";
         }
     }

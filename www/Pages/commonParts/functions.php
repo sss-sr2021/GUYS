@@ -88,7 +88,7 @@ function getLoginUser($where=[]){
                 $rows3[$key] = $value;  //dateをkeyとしてmileageを渡す
             }
 
-        $_SESSION['logined'] = $rows[0] + @$rows3;    
+        $_SESSION['logined'] = @$rows[0] + @$rows3;    
         return $_SESSION['logined'];
     }else{                                      //もしセッション変数の中身が存在したら、セッション変数から中身を取り出す。
         return $_SESSION['logined'];

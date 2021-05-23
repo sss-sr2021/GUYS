@@ -3,9 +3,10 @@
  * deleteAccount.php :アカウント削除画面
  * 
  * Author:伊藤明洋
- * Version :0.0.1
+ * Version :0.1.1
  * create :2021.05.20
  * Update :2021.05.20 伊藤
+ *         2021.05.23 花岡(全テーブルからユーザーのデータを削除できるように変更)
  * 
  * 
 */
@@ -15,13 +16,9 @@
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];
     if(!empty($_POST['delete'])){
-        $dbh = dbInit();
-        $sth = $dbh-> prepare(
-            'DELETE FROM users WHERE id = :id'
-        );
-        $ret = $sth->execute([
-            'id' => $user["id"]  //:idはセッションにある値を入れる
-        ]);
+        dbExe("DELETE FROM users WHERE id =".$user["id"] );//idはセッションにある値を入れる
+        dbExe("DELETE FROM mileage WHERE user_id =".$user["id"] );
+        dbExe("DELETE FROM shop_info WHERE user_id =".$user["id"] );
         $ok=true; //成功したので、trueにする。
     }
     else{
