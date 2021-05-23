@@ -13,6 +13,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    loginBi();//ログインしていなければログインページへ遷移
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];
     if(!empty($_POST['delete'])){

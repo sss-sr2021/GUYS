@@ -9,6 +9,8 @@ Created:2021.05.20（）
 updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
         2021.05.22 花岡//(dbExe関数の追加)
         2021.05.23 花岡//getLoginUserのエラー回避処理の追加
+                    //myPageBi関数にsession_start追加
+                    //loginBi関数の追加：ログインしていなければログインページへ遷移する
 */
 
 
@@ -165,9 +167,21 @@ myPageBi関数：マイページを押したときの分岐
 */
 
 function myPageBi(){
+    @session_start();
     if(!empty($_SESSION['logined'])){           //セッションの中身があったら
         header('Location:../myPage.php');       //myPage.phpに移動
     }else{                                      //セッションの中身がなければ
     header('Location:../login.php');            //login.phpに移動
+    }
+}
+
+
+/*
+loginBi関数：ログインしていなければログインページへ
+*/
+function loginBi(){
+    @session_start();
+    if(empty($_SESSION['logined'])){    //ログインしていなければ
+        header('Location:./login.php');//ログインページへ
     }
 }

@@ -11,6 +11,7 @@
 */
 
     require_once './commonParts/functions.php';
+    loginBi();//ログインしていなければログインページへ遷移
 ?>
 <?php
 $pageTitle = "カスタム";

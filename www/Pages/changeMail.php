@@ -18,6 +18,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    loginBi();//ログインしていなければログインページへ遷移
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $pass=filter_input(INPUT_POST, 'password');
     $new_email=filter_input(INPUT_POST, 'email');

@@ -16,6 +16,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    loginBi();//ログインしていなければログインページへ遷移
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];
     $_SESSION['todayMileage'] = 0;//今日のマイレージ
@@ -52,7 +53,6 @@
                 ]);
         }
         else{
-            var_dump($_SESSION["logined"][$today]);
             //usersテーブルsumMileageの処理
             $sum = $user['sum_mileage']+filter_input(INPUT_POST,'mileage');//ログインユーザーの累計マイレージ+入力マイレージ
             $sth = $dbh-> prepare(
@@ -98,7 +98,7 @@ include('./commonParts/header.php');
                     <a href="shop.php">▶ショップ</a><br />
                     <a href="custom.php">▶カスタム</a><br />
                     <a href="settingAccount.php">▶アカウント設定</a><br />
-                    <a href="">ログアウト</a>
+                    <a href="commonParts/loginout.php">ログアウト</a>
                 </div>
                 <div class="mile">
                     <h3>入力フォーム</h3>

@@ -18,6 +18,7 @@
 
     require_once './commonParts/functions.php';
     @session_start();
+    loginBi();//ログインしていなければログインページへ遷移
     $dbh=dbInit();
     
     function ranking($span){

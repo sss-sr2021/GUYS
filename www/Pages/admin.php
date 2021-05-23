@@ -12,6 +12,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    loginBi();//ログインしていなければログインページへ遷移
         $dbh = dbInit();
         $sql = "SELECT * FROM users";
         $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列を検索
