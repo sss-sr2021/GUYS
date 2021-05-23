@@ -22,7 +22,7 @@
     $today = date("Y-m-d");//今日の日付
     if(!empty($_POST['submit'])){ //もしsubmitが押されれば以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
-        if(!empty($_SESSION["logined"][$today]) ||@$_SESSION["logined"][$today] ===''){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
+        if(!empty($_SESSION["logined"][$today]) ||@$_SESSION["logined"][$today] ==='' ||@$_SESSION["logined"][$today]==="0"){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
             //usersテーブルsumMileageの処理
                 //ログインユーザーが今日入力したデータを取得
                     $sth=$dbh->prepare("SELECT mileage FROM mileage WHERE date='$today' AND user_id=:user_id");
@@ -30,13 +30,9 @@
                         'user_id' => filter_input(INPUT_POST,'user_id')
                     ]);
                     $rows=$sth->fetchAll();
-                    echo "過去入力分:{$rows[0]['mileage']}<br />";
-                    echo "前合計値：{$user['sum_mileage']}<br />";
-                    echo "現在入力分:{$_POST['mileage']}<br />";
                 //今日入力したマイレージ分をusersテーブルの合計マイレージから減算して、変更入力分のデータをマイレージを加算
                     $dif = $user['sum_mileage']-@$rows[0]['mileage'];
                     $sum = $dif+filter_input(INPUT_POST,'mileage');//差分+入力マイレージ
-                    print_r($sum);
                     $sth = $dbh-> prepare(
                         'UPDATE users SET sum_mileage = :sum_mileage WHERE id = :id' 
                     );
@@ -56,6 +52,7 @@
                 ]);
         }
         else{
+            var_dump($_SESSION["logined"][$today]);
             //usersテーブルsumMileageの処理
             $sum = $user['sum_mileage']+filter_input(INPUT_POST,'mileage');//ログインユーザーの累計マイレージ+入力マイレージ
             $sth = $dbh-> prepare(

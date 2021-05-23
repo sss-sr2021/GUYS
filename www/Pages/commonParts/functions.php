@@ -89,14 +89,15 @@ function getLoginUser($where=[]){
             }
             if(!empty($rows3)){//$rows3が空じゃなければ（エラー回避処理）
                 $_SESSION['logined'] = @$rows[0] + @$rows3;  
-                return $_SESSION['logined'];
+                return @$_SESSION['logined'];
             }
             else{
-                return $_SESSION['logined'];
+                $_SESSION['logined'] = @$rows[0];
+                return @$_SESSION['logined'];
             }
         
     }else{                                      //もしセッション変数の中身が存在したら、セッション変数から中身を取り出す。
-        return $_SESSION['logined'];
+        return @$_SESSION['logined'];
     }
 }
 

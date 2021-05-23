@@ -19,17 +19,18 @@
         $dbh = dbInit();
         $user = getLoginUser(['email' => $email]);//usersテーブルの中のすべての列の中からemailの列を検索している
         if(!empty($user)){//ログインユーザー情報があれば
-            if(password_verify($pass,$user['pass'])){//passwordを照合して一致すれば、myPage.phpに飛ぶ
+            if(password_verify($pass,$user['pass'])){
+                //passwordを照合して一致すれば、myPage.phpに飛ぶ
                 header('Location:myPage.php');
             }else{//パスワードが間違っていれば
                 logout();
-                $message= 'メールアドレスまたはパスワードが違います。';
+                $message= 'メールアドレスまたはパスワードが違います。1';
             }
         }
         else{//ログインユーザー情報がなければ
             logout();
             $user="";
-            $message='メールアドレスまたはパスワードが違います。';
+            $message='メールアドレスまたはパスワードが違います。2';
         }
     }
 
