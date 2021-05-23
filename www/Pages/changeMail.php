@@ -6,6 +6,8 @@
  * Version :0.0.1
  * create :2021.05.20
  * Update :2021.05.20 伊藤
+ *         2021.05.23 花岡//エラーメッセージにpタグ追加
+ * 
  * $user :セッションにあるユーザー情報
  * $pass :入力されたパスワード
  * $new_email :新しいパスワード
@@ -54,7 +56,7 @@ include('./commonParts/header.php');
      <div class='container'>
          <main>
             <h2>メールアドレス変更</h2>
-            <?= $error_message ?>
+            <p><?= $error_message ?></p>
                 <form action="" method="post">
                     <p>新しいメールアドレス：<input type="email" name="email" required></p>
                     <p>新しいメールアドレス：<br /> （確認のためもう一度） <input type="email" name="email2" required></p>

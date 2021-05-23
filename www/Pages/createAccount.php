@@ -47,7 +47,7 @@ include('./commonParts/header.php');
      <div class='container'>
          <main>
             <h2>アカウント作成</h2>
-            <?= $message ?>
+            <p><?= $message ?></p>
                 <form action="createAccount.php" method="post">
                     <p>メールアドレス：<input type="email" name="email" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>

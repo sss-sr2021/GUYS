@@ -8,7 +8,7 @@ Version:0.0.1
 Created:2021.05.20（）
 updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
         2021.05.22 花岡//(dbExe関数の追加)
-
+        2021.05.23 花岡//getLoginUserのエラー回避処理の追加
 */
 
 
@@ -87,9 +87,14 @@ function getLoginUser($where=[]){
                 $value = $row['mileage'];  //mileageを渡す
                 $rows3[$key] = $value;  //dateをkeyとしてmileageを渡す
             }
-
-        $_SESSION['logined'] = @$rows[0] + @$rows3;    
-        return $_SESSION['logined'];
+            if(!empty($rows3)){//$rows3が空じゃなければ（エラー回避処理）
+                $_SESSION['logined'] = @$rows[0] + @$rows3;  
+                return $_SESSION['logined'];
+            }
+            else{
+                return $_SESSION['logined'];
+            }
+        
     }else{                                      //もしセッション変数の中身が存在したら、セッション変数から中身を取り出す。
         return $_SESSION['logined'];
     }
