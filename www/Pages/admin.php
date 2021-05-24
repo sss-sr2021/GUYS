@@ -5,7 +5,7 @@
  * Author:秦伊吹
  * Version :0.0.1
  * create :2021.05.20
- * Update :2021.05.21 秦//
+ * Update :2021.05.21 秦//admin.phpのユーザー削除機能追加。
  * 
  * 
 */
@@ -73,7 +73,7 @@ include('./commonParts/header.php');
                 <script>
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
                         alert('削除しました'); 
-                        location.href = 'commonParts/toAdmin.php';//再読み込み
+                        location.href = 'commonParts/toAdmin.php';//外部ファイルに一度飛んでadmin.phpに戻る。
                     <?php } ?>
                 </script>
         </main>
