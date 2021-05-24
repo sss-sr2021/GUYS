@@ -52,7 +52,7 @@ include('./commonParts/header.php');
                         <th>所持ポイント</th>
                     </tr>
                     <?php
-                    foreach($rows as $row):
+                    foreach($rows as $row)://usersテーブルのすべての中身をforeachで回す。
                         ?>
                     <tr class="row_<?= $row['id'] ?>">
                         <td> <input type="checkbox" name="check[<?= $row['id'] ?>]" value="<?= $row['id'] ?>"> </td>

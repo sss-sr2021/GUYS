@@ -13,8 +13,8 @@ updated:
 
     require_once './functions.php';
     session_start();
-    if($_SESSION['logined']['id'] == 4){
+    if($_SESSION['logined']['email'] == 'admin@sr-co.co.jp'){//もしセッションの中身が管理者の情報ならadmin.phpに飛ぶ。
         header('Location:../admin.php');
     }else{
-        header('Location:../top.php');
+        header('Location:../top.php');//もしセッションの中身が管理者の情報ではないなら、top.phpに飛ぶ。
     }

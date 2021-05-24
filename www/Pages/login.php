@@ -22,7 +22,7 @@
         if(!empty($user)){//ログインユーザー情報があれば
             if(password_verify($pass,$user['pass'])){
                 //passwordを照合して一致すれば、myPage.phpに飛ぶ
-                if($user['id'] == 4){
+                if($user['email'] == 'admin@sr-co.co.jp'){
                     header('Location:admin.php');
                     //もしidが管理者ユーザーのものならadmin.phpに飛ぶ
                 }else{
