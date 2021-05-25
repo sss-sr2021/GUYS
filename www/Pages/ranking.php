@@ -140,21 +140,33 @@ include('./commonParts/header.php');
         <script>
         </script>
         <main>
-            <h2><?= $_SESSION['span'] ?>ランキング</h2>
-                <form action="ranking.php" method="post">
-                    <label for="spanButton">
-                    <button type="submit" name="weeklyButton" id="weekly">週間</button>
-                    <button type="submit" name="monthlyButton" id="monthly">月間</button>
-                    <button type="submit" name="yearlyButton" id="yearly">年間</button>
-                    <button type="submit" name="totalButton" id="total">累計</button>
-                    </label>
-                </form>
-                <div class="spanData">
-                    <p><?= $message ?></p>
+            <div class="matome">
+                <div class="MENU inLineBrock">
+                    <h3>MENU</h3>
+                    <a href="top.php">▶トップページ</a><br />
+                    <a href="myPage.php">▶マイページ</a><br />
+                    <a href="shop.php">▶ショップ</a><br />
+                    <a href="custom.php">▶カスタム</a><br />
+                    <a href="settingAccount.php">▶アカウント設定</a><br />
+                    <a href="commonParts/loginout.php">ログアウト</a>
                 </div>
+            <div class="Ranking inLineBrock">
+            
+                <form action="ranking.php" method="post">
+                    <div class="spanButton">
+                        <label for="spanButton">
+                            <button type="submit" name="weeklyButton" id="weekly">週間</button>
+                            <button type="submit" name="monthlyButton" id="monthly">月間</button>
+                            <button type="submit" name="yearlyButton" id="yearly">年間</button>
+                            <button type="submit" name="totalButton" id="total">累計</button>
+                        </label>
+                    </div>
+                </form>
+                <h2><?= $_SESSION['span'] ?>ランキング</h2>
+                
                 <?php if($userResult<>null): ?><!-- 指定した期間内にログインユーザーのデータがあれば -->
                     <div class="yourRank">
-                        <p>あなたは<span class="rankingRank"><?= $userResult['rank'] ?>位</span><span class="rankingMileage"><?= $userResult['mileage'] ?>km</span></p>
+                        <h4><p>あなたは<span class="rankingYourRank"><?= $userResult['rank'] ?>位</span><span class="rankingYourMileage"><?= $userResult['mileage'] ?>km</span></p></h4>
                     </div>
                 <?php else:?><!-- 指定した期間内にログインユーザーのデータがなければ -->
                     <div class="yourRank">
@@ -171,7 +183,11 @@ include('./commonParts/header.php');
                     <?php else:?>
                         <p>ランキングデータがありません。</p>
                     <?php endif; ?><!-- if($resultArr<>null): -->
+                    <div class="spanData">
+                        <p><?= $message ?></p>
+                    </div>
                 </div>
+            </div>
         </main>
     </div>
 <?php

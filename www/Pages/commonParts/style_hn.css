@@ -9,42 +9,6 @@ updated:2021.05.25
 
 */
 
-button{
-    background:blue;
-    color:#fff;
-    border:none;
-    position:relative;
-    height:40px;
-    font-size:1.2em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-  }
-  button:hover{
-    background:#fff;
-    color:blue;
-  }
-  button:before,button:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: blue;
-    transition:400ms ease all;
-  }
-  button:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  button:hover:before,button:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
 
 /* myPage */
 .mile{
@@ -55,7 +19,7 @@ button{
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
-    border: solid 3px #6091d3;/*線*/
+    border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
     width:30%;
 }
@@ -65,7 +29,7 @@ button{
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
-    border: solid 3px #6091d3;/*線*/
+    border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
     width:30%;
 }
@@ -75,7 +39,7 @@ button{
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
-    border: solid 3px #6091d3;/*線*/
+    border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
     width:30%;
     
@@ -91,7 +55,101 @@ button{
     vertical-align: top;
     
 }
+.inLineBrock h3{
+    border-bottom-style: solid;
+    border-bottom-color:#207af0;
+    color:#207af0;
+    
+}
 .matome{
     width: 80%;
     margin:auto;
+}
+/* ranking.php */
+.Ranking{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:60%;
+}
+.Ranking h2{
+    border-top-style: solid;
+    border-top-color:#207af0;
+    text-align: center;
+    color:#207af0;
+}
+.totalRank li{
+    list-style: none;
+}
+.spanData{
+    border-top-style: solid;
+    border-top-color:#207af0;
+    color:#207af0;
+    text-align: right;
+}
+.spanButton{
+
+    color:#207af0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+button{
+    background:#207af0;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:40px;
+    font-size:1.2em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    
+  }
+  button:hover{
+    background:#fff;
+    color:#207af0;
+  }
+  button:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #207af0;
+    transition:400ms ease all;
+  }
+  button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+.yourRank{
+    border:solid;
+    text-align: right;
+}
+
+
+.rankingRank{
+    text-align:left;
+    margin-left:25%;
+    margin-right:5%;
+}
+.rankingName{
+    text-align:center;
+    width:50%;
+}
+.rankingMileage{
+    float:right;
 }
