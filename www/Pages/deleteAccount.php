@@ -33,7 +33,9 @@ $h1 ="アカウント削除";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
-         <main>
+        <main>
+
+        <div class="block">
             <h2>アカウント削除</h2>
                 <form action="" method="post">
                     <p>アカウントを削除します。</p>
@@ -44,7 +46,9 @@ include('./commonParts/header.php');
                 </script>
                 -->
                 </form>
-         </main>
+        </div>
+        
+        </main>
      </div>
         <script>
 

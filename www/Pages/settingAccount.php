@@ -20,15 +20,15 @@ include('./commonParts/header.php');
 ?>
     <div class='container'>
         <main>
+
+        <div class="block">
             <h2>アカウント設定一覧</h2>
-                <ul class="">
-                    <li><a href="changeProfile.php">プロフィール情報変更ページ</a></li>
-                    <li><a href="changeMail.php">メールアドレス変更ページ</a></li>
-                </ul>
-                <ul class="">
-                    <li><a href="changePassword.php">パスワード変更ページ</a></li>
-                    <li><a href="deleteAccount.php">アカウント削除ページ</a></li>
-                </ul>
+                <a href="changeProfile.php">▶プロフィール情報変更ページ</a><br />
+                <a href="changeMail.php">▶メールアドレス変更ページ</a><br />
+                <a href="changePassword.php">▶パスワード変更ページ</a><br />
+                <a href="deleteAccount.php">▶アカウント削除ページ</a>
+        </div>
+
         </main>
     </div>
 <?php

@@ -58,21 +58,26 @@ include('./commonParts/header.php');
 ?>
      <div class='container'>
          <main>
-            <h2>パスワード変更</h2>
-            <p><?= $error_message ?></p>
-                <form action="" method="post">
-                    <p>現在のパスワード：<input type="password" name="password" required></p>
-                    <p>新しいパスワード：<input type="password" name="new_password" required></p>
-                    <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="new_password2" required></p>
-                    <p><input type="submit" name="change" value="変更"></p>
-                </form>
-                <script>
-                    //変更した場合のみアラート表示
-                    <?php if($ok){ ?>  //$okがtrueの時だけアラート
-                    alert('変更しました'); 
-                    location.href = 'myPage.php';
-                    <?php } ?>
-                </script>
+
+                <div class="block">
+                    <h2>パスワード変更</h2>
+                    <p><?= $error_message ?></p>
+                    <form action="" method="post">
+                        <p>現在のパスワード：<input type="password" name="password" required></p>
+                        <p>新しいパスワード：<input type="password" name="new_password" required></p>
+                        <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="new_password2" required></p>
+                        <p><input type="submit" name="change" value="変更"></p>
+                    </form>
+                </div>
+                
+                    <script>
+                        //変更した場合のみアラート表示
+                        <?php if($ok){ ?>  //$okがtrueの時だけアラート
+                        alert('変更しました'); 
+                        location.href = 'myPage.php';
+                        <?php } ?>
+                    </script>
+
          </main>
      </div>
 <?php

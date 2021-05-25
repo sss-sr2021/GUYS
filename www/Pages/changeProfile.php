@@ -47,7 +47,9 @@ $h1 ="プロフィール情報変更";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
-         <main>
+        <main>
+        
+        <div class="block">
             <h2>プロフィール情報変更</h2>
                 <form action="" method="post">
                     <p>お名前：<input type="text" name="name" required></p>
@@ -59,6 +61,8 @@ include('./commonParts/header.php');
                     <!-- <p>パスワード：<input type="password" name="password" required></p> -->
                     <p><input type="submit" name="change" value="変更"></p>
                 </form>
+        </div>
+        
                 <script>
                     //変更した場合のみアラート表示
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
@@ -66,7 +70,7 @@ include('./commonParts/header.php');
                     location.href = 'myPage.php';
                     <?php } ?>
                 </script>
-         </main>
+        </main>
      </div>
 <?php
 include('./commonParts/footer.php');

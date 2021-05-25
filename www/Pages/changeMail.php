@@ -58,6 +58,8 @@ include('./commonParts/header.php');
 ?>
      <div class='container'>
          <main>
+
+         <div class="block">
             <h2>メールアドレス変更</h2>
             <p><?= $error_message ?></p>
                 <form action="" method="post">
@@ -66,6 +68,8 @@ include('./commonParts/header.php');
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="change" value="変更"></p>
                 </form>
+        </div>
+        
                 <script>
                     //変更した場合のみアラート表示
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート

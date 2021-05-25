@@ -9,6 +9,12 @@ updated:2021.05.25
 
 */
 
+
+/*
+    headerのcss(レイアウト、ナビゲーションバー)
+*/
+
+/*全体共通*/
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +26,7 @@ updated:2021.05.25
     --nav-background: rgb(180, 180, 180); /*ナビゲーションバーの背景色*/
 }
 
+/*ナビゲーションバー*/
 nav {
     display: flex;
     padding: 0 50px;
@@ -29,6 +36,7 @@ nav {
     background: var(--nav-background);
 }
 
+/*タイトル*/
 .title h1 {
     font-size: 40px;
     font-weight: 600;
@@ -59,6 +67,7 @@ nav {
     position: relative;
 }
 
+/* ロゴ画像、タイトル、アカウント作成リンク */
 .head{
     display: flex;
     padding: 0 0px;
@@ -67,6 +76,7 @@ nav {
     background-color:rgb(161, 232, 253);
     flex-wrap:nowrap;
 }
+/* アカウント作成リンク */
 .create{
     text-align:left;
     margin:auto;
@@ -75,6 +85,7 @@ nav {
 body.logined .create{
     visibility:hidden;
 }
+/* ナビゲーションバーの棒 */
 .menu{
     text-align:left;
     margin:auto;
@@ -125,39 +136,52 @@ body.logined .create{
     transform: rotate(-45deg);
 }
 
-/* responsive */
+/* レスポンシブデザイン */
 
 @media screen and (max-width: 800px) {
-    .nav-links {
-        flex-direction: column;
-        position:absolute;
-        top: 90px;
-        left: 100%;
-        width: 250px;
-        height: 18em;
-        background: var(--nav-background);
-        margin-top: var(--nav-height);
-        transition: 0.5s ease-out;
-        display:none;
+.nav-links {
+    flex-direction: column;
+    position:absolute;
+    top: 90px;
+    left: 100%;
+    width: 250px;
+    height: 18em;
+    background: var(--nav-background);
+    margin-top: var(--nav-height);
+    transition: 0.5s ease-out;
+    display:none;
     }
-    .nav-links li {
-         height: var(--nav-height);
-         line-height: var(--nav-height);
-         text-align: center;
-         width: 100%;
-         display: block;
-    }
-    .menu {
-         display: block;
-         margin-left: auto;
-    }
+.nav-links li {
+     height: var(--nav-height);
+    line-height: var(--nav-height);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.menu {
+    display: block;
+    margin-left: auto;
+}
 
-    .menu.toggle + .nav-links {
-        /*width: 250px;*/
-        transform: translateX(-100%);
-         display:block;
-    }
-    nav{
-        /*display:none;*/
-    }
+.menu.toggle + .nav-links {
+    /*width: 250px;*/
+    transform: translateX(-100%);
+    display:block;
+}
+}
+
+
+/* ログイン、アカウント変更、作成、削除ページ */
+
+.block{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    margin-left:10px;
+    margin-right:10px;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
 }
