@@ -46,3 +46,52 @@ button{
     transition:800ms ease all;
   }
 
+/* myPage */
+.mile{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    margin-left:10px;
+    margin-right:10px;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+}
+.MENU{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+}
+.user{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+    
+}
+.userData{
+    list-style: none;
+}
+.rank{
+    list-style: none;
+}
+.inLineBrock{
+    display: inline-block;  
+    vertical-align: top;
+    
+}
+.matome{
+    width: 80%;
+    margin:auto;
+}

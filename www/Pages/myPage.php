@@ -115,7 +115,8 @@ include('./commonParts/header.php');
             <h2>
                 <?= $user['name']?>さん
             </h2>
-                <div class="MENU">
+            <div class="matome">
+            <div class="MENU inLineBrock">
                     <h3>MENU</h3>
                     <a href="top.php">▶トップページ</a><br />
                     <a href="ranking.php">▶ランキング</a><br />
@@ -124,26 +125,26 @@ include('./commonParts/header.php');
                     <a href="settingAccount.php">▶アカウント設定</a><br />
                     <a href="commonParts/loginout.php">ログアウト</a>
                 </div>
-                <div class="mile">
+                <div class="mile inLineBrock">
                     <h3>入力フォーム</h3>
                     <p>今日のマイル</p>
                     <form method="post" action="myPage.php">
                         <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  required>km</p><!-- 初期値0 最小値0-->
-                        <p><input type="submit" name="submit" value="送信"></p>
+                        <p><input type="submit" name="submit" value="更新"></p>
                         <input type="hidden" name="user_id" value="<?= $user['id']?>">
                     </form>
                 </div>
-                <div class="user">
+                <div class="user inLineBrock">
                     <h3>
                         <?= $user['name']?>さんのデータ
                     </h3>
                     <!--  後々データベースからもってくる、下は仮 階級はif文？？-->
-                    <ul>
+                    <ul class="userData">
                         <li><p>所持ポイント:<?= $nowUsers[0]['point'] ?>ポイント</p></li>
                         <li><p>累計マイレージ：<?= $nowUsers[0]['sum_mileage'] ?>km</p></li>
                         <li><p>あなたの階級：<?= $rank ?></p></li>
                     </ul>
-                    <p class="rankList">●階級一覧</p>
+                    <p class="rankList">▼階級一覧</p>
                         <ul class='rank'>
                             <li>0km → お散歩級</li>
                             <li>42km → フルマラソン級</li>
@@ -158,12 +159,14 @@ include('./commonParts/header.php');
                             <li>36万km → 月まで級</li>
                         </ul>
                 </div>
+            </div>
+                
         </main>
     </div>
         <script>
             //変更した場合のみアラート表示
             <?php if($ok){ ?>  //$okがtrueの時だけアラート
-            alert('変更しました'); 
+            alert('更新しました'); 
             location.href = 'myPage.php';
             <?php } ?>
         </script>
