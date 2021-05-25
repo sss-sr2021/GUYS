@@ -91,8 +91,24 @@ $pageTitle = "マイページ";
 $h1 ="マイページ";
 include('./commonParts/header.php');
 ?>
-     <div class='container'>
-         <main>
+    <script>
+        $(function(){
+            $('.rankList').click(function(){
+                $(this).next().slideToggle('slow');
+            });
+        });
+    </script>
+    <style>
+        .rankList{
+            cursor:pointer;
+            
+        }
+        .rank{
+            display:none;
+        }
+    </style>
+    <div class='container'>
+        <main>
             <h2>
                 <?= $user['name']?>さん
             </h2>
@@ -115,12 +131,17 @@ include('./commonParts/header.php');
                     </form>
                 </div>
                 <div class="user">
+                    <h3>
+                        <?= $user['name']?>さんのデータ
+                    </h3>
                     <!--  後々データベースからもってくる、下は仮 階級はif文？？-->
-                        <p>・<?= $nowUsers[0]['point'] ?>ポイント</p>
-                        <p>・<?= $nowUsers[0]['sum_mileage'] ?>km</p>
-                        <p>・<?= $rank ?></p>
-                    <p>●階級一覧</p>
-                        <ul name='rank'>
+                    <ul>
+                        <li><p>所持ポイント:<?= $nowUsers[0]['point'] ?>ポイント</p></li>
+                        <li><p>累計マイレージ：<?= $nowUsers[0]['sum_mileage'] ?>km</p></li>
+                        <li><p>あなたの階級：<?= $rank ?></p></li>
+                    </ul>
+                    <p class="rankList">●階級一覧</p>
+                        <ul class='rank'>
                             <li>0km → お散歩級</li>
                             <li>42km → フルマラソン級</li>
                             <li>200km → 琵琶湖１周級</li>
