@@ -5,8 +5,8 @@
  * Author:秦伊吹
  * Version :0.0.1
  * create :2021.05.20
- * Update :2021.05.21 秦//admin.phpのユーザー削除機能追加。
- * 
+ * Update :2021.05.24 秦//admin.phpのユーザー削除機能追加。
+ *         2021.05.25 秦//管理者だけ非表示。
  * 
 */
 
@@ -14,18 +14,18 @@
     session_start();
     loginBi();//ログインしていなければログインページへ遷移
         $dbh = dbInit();
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM users WHERE NOT email = 'admin@sr-co.co.jp'";     //管理者以外のユーザー情報の表示。
         $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列を検索
         $exc = $sth->execute();
         $rows = $sth->fetchAll();
 
         $ok=false;
         
-        $check = @$_POST['check'];  //チェックが入ったものを配列に入れる。
-        if(!empty($_POST['delete'])){   //もし削除ボタンが押されて空じゃなければ
-            foreach((array)$check as $value){      //$checkの配列の中身をforeachで回す。
-                dbExe("DELETE FROM users WHERE id = $value");   //usersテーブルからidを指定して削除
-                dbExe("DELETE FROM shop_info WHERE user_id = $value");  //shop_infoテーブルからidを指定して削除
+        $check = @$_POST['check'];      //チェックが入ったものを配列に入れる。
+        if(!empty($_POST['delete'])){       //もし削除ボタンが押されて空じゃなければ
+            foreach((array)$check as $value){       //$checkの配列の中身をforeachで回す。
+                dbExe("DELETE FROM users WHERE id = $value");       //usersテーブルからidを指定して削除
+                dbExe("DELETE FROM shop_info WHERE user_id = $value");      //shop_infoテーブルからidを指定して削除
                 $ok=true;
             }
         }
