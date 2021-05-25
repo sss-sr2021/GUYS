@@ -220,13 +220,13 @@ function userRank($a){
     elseif($a>=8800&&$a<12000){
         $rank=$arrRank[7];
     }
-    elseif($a>=12000&&$a){
+    elseif($a>=12000&&$a<40000){
         $rank=$arrRank[8];
     }
-    elseif($a>=40000&&$a){
+    elseif($a>=40000&&$a<360000){
         $rank=$arrRank[9];
     }
-    elseif($a>360000){
+    elseif($a>=360000){
         $rank=$arrRank[10];
     }
     return $rank;
