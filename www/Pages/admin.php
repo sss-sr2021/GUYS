@@ -12,7 +12,10 @@
 
     require_once './commonParts/functions.php';
     session_start();
-    loginBi();//ログインしていなければログインページへ遷移
+    loginBi();      //ログインしていなければログインページへ遷移
+    if($_SESSION['logined']['email'] !== 'admin@sr-co.co.jp'){      //セッションの中身が管理者じゃなければ、マイページへ遷移。
+        header('Location:myPage.php');
+    }
         $dbh = dbInit();
         $sql = "SELECT * FROM users WHERE NOT email = 'admin@sr-co.co.jp'";     //管理者以外のユーザー情報の表示。
         $sth = $dbh->prepare($sql);     //usersテーブルの中のすべての列を検索
