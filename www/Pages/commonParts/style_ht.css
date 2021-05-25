@@ -26,3 +26,19 @@ footer{
 }
 
 
+div.images{
+    width:100%;
+    height:70vh !important;
+    background-image:url("../../images/yam0080-009.jpg");
+    background-size:100%;
+    background-position:center;
+}
+
+.inimages{
+    font-size:50px;
+    text-shadow: 6px 4px 2px azure;
+    font-family:serif;
+    font-weight:bold;
+    padding-left:10px;
+}
+

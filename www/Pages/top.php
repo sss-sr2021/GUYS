@@ -19,7 +19,7 @@ include('./commonParts/header.php');
 ?>
      <div class='container'>
          <main>
-            <img src="" alt="背景画像" />
+             <div class="images"><p class="inimages">輝く明日へGO！</p></div>
             <p>機能紹介</p>
          </main>
      </div>
