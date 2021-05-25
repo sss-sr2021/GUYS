@@ -6,7 +6,7 @@
  * Version :0.0.1
  * create :2021.05.20
  * Update :2021.05.24 秦//admin.phpのユーザー削除機能追加。
- *         2021.05.25 秦//管理者だけ非表示。
+ *         2021.05.25 秦//管理者だけ非表示。パスワードは非表示
  * 
 */
 
@@ -50,7 +50,6 @@ include('./commonParts/header.php');
                         <th>名前</th>
                         <th>性別</th>
                         <th>メールアドレス</th>
-                        <th>パスワード</th>
                         <th>マイレージ</th>
                         <th>所持ポイント</th>
                     </tr>
@@ -63,7 +62,6 @@ include('./commonParts/header.php');
                         <td><?= $row['name'] ?></td>
                         <td><?= $row['gender'] ?></td>
                         <td><?= $row['email'] ?></td>
-                        <td><?= $row['pass'] ?></td>
                         <td><?= $row['sum_mileage'] ?></td>
                         <td><?= $row['point'] ?></td>
                     </tr>
