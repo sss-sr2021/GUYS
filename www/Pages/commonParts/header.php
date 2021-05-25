@@ -23,13 +23,19 @@ require_once './commonParts/functions.php';
         div class="wrapper" :全体
         div class="container" :mainの中
     -->
- <head>
+<head>
+    <title><?= $pageTitle ?></title>
     <meta charset="utf-8">
     <script src="/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="style.css" /><!-- 最終完成用CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style_it.css" /><!-- 伊藤用CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style_ht.css" /><!-- 秦用CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style_hn.css" /><!-- 花岡用CSSファイルの読み込み -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
- <title><?= $pageTitle ?></title>
- <body>
-     <div class='wrapper'>
+
+<body>
+    <div class='wrapper'>
         <header style="">
             <a href="top.php"><img src="../images/logo.png" alt="ロゴ画像" width="80px" height="80px"/></a>
             <h1><?= $h1 ?></h1>
