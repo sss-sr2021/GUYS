@@ -3,14 +3,14 @@
  * myPage.php :マイページ画面
  * 
  * Author:伊藤明洋
- * Version :0.1.1
+ * Version :0.1.2
  * create :2021.05.20
  * Update :2021.05.20 花岡
  *         2021.05.22 花岡(マイレージ入力フォームに初期値今日のマイレージ 最小値0追加)
  *                        (mileageテーブルに追加変更可能に)
  *                        (usersテーブルsum_mileage列の処理の追加)
- * 
  *                         $_SESSION["logined"][$today]:今日のマイレージ
+ *         2021.05.24 花岡//ポイント付与の処理の追加
  * 
 */
 
@@ -24,7 +24,7 @@
     if(!empty($_POST['submit'])){ //もしsubmitが押されれば以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         if(!empty($_SESSION["logined"][$today]) ||@$_SESSION["logined"][$today] ==='' ||@$_SESSION["logined"][$today]==="0"){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
-            //usersテーブルsumMileageの処理
+            //usersテーブルsum_mileageの処理
                 //ログインユーザーが今日入力したデータを取得
                     $sth=$dbh->prepare("SELECT mileage FROM mileage WHERE date='$today' AND user_id=:user_id");
                     $exc=$sth->execute([
@@ -35,13 +35,15 @@
                     $dif = $user['sum_mileage']-@$rows[0]['mileage'];
                     $sum = $dif+filter_input(INPUT_POST,'mileage');//差分+入力マイレージ
                     $sth = $dbh-> prepare(
-                        'UPDATE users SET sum_mileage = :sum_mileage WHERE id = :id' 
+                        'UPDATE users SET sum_mileage = :sum_mileage,point = :point WHERE id = :id' 
                     );
                     $ret = $sth->execute([
                         'sum_mileage' => $sum,
+                        'point' => $sum*10,
                         'id' => filter_input(INPUT_POST,'user_id')
                     ]);
                     $_SESSION['logined']['sum_mileage']=$sum;//セッションの合計マイレージ列の更新
+            //
             //mileageテーブルの更新
                 $sth = $dbh-> prepare(
                     'UPDATE mileage SET mileage = :mileage WHERE user_id = :user_id and date = :date'  //条件が二つあるときはandを使う 
@@ -53,13 +55,14 @@
                 ]);
         }
         else{
-            //usersテーブルsumMileageの処理
+            //usersテーブルsum_mileageの処理
             $sum = $user['sum_mileage']+filter_input(INPUT_POST,'mileage');//ログインユーザーの累計マイレージ+入力マイレージ
             $sth = $dbh-> prepare(
-                'UPDATE users SET sum_mileage = :sum_mileage WHERE id = :id'
+                'UPDATE users SET sum_mileage = :sum_mileage,point = :point WHERE id = :id'
             );
             $ret = $sth->execute([
                 'sum_mileage' => $sum,
+                'point' => $sum*10,
                 'id' => filter_input(INPUT_POST,'user_id')
             ]);
             $_SESSION['logined']['sum_mileage']=$sum;//セッションの合計マイレージ列の更新
@@ -79,7 +82,7 @@
     else{
         "";
     }
-    $nowSumMileage=dbExe("SELECT sum_mileage FROM users WHERE id=".$_SESSION['logined']['id']);
+    $nowUsers=dbExe("SELECT * FROM users WHERE id=".$_SESSION['logined']['id']);
 ?>
 <?php
 $pageTitle = "マイページ";
@@ -111,8 +114,8 @@ include('./commonParts/header.php');
                 </div>
                 <div class="user">
                     <!--  後々データベースからもってくる、下は仮 階級はif文？？-->
-                        <p>・〇〇ポイント</p>
-                        <p>・<?= $nowSumMileage[0]['sum_mileage'] ?>km</p>
+                        <p>・<?= $nowUsers[0]['point'] ?>ポイント</p>
+                        <p>・<?= $nowUsers[0]['sum_mileage'] ?>km</p>
                         <p>・〇〇級</p>
                     <p>●階級一覧</p>
                         <ul name='rank'>
@@ -129,14 +132,14 @@ include('./commonParts/header.php');
                             <li>36万km → 月まで級</li>
                         </ul>
                 </div>
-         </main>
-     </div>
+        </main>
+    </div>
         <script>
             //変更した場合のみアラート表示
-            // <?php if($ok){ ?>  //$okがtrueの時だけアラート
-            // alert('変更しました'); 
-            // location.href = 'myPage.php';
-            // <?php } ?>
+            <?php if($ok){ ?>  //$okがtrueの時だけアラート
+            alert('変更しました'); 
+            location.href = 'myPage.php';
+            <?php } ?>
         </script>
 <?php
 include('./commonParts/footer.php');
