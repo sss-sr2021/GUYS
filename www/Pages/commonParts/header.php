@@ -48,9 +48,17 @@ require_once './commonParts/functions.php';
                     <?php //if(empty($_SESSION['logined'])):?><!--ログインしていなければ-->
                     <a href ="createAccount.php">アカウント作成</a>
                 </div>
+                
             </div>
+
             <?php //endif;?>
+
                 <nav>
+                <div class="menu">
+                    <div class="bar bar1"></div>
+                    <div class="bar bar2"></div>
+                    <div class="bar bar3"></div>
+                </div>
                     <ul class="nav-links">
                         <li><a href="top.php">TOP</a></li>
                         <li><a href="./commonParts/myPagebifurcation.php">マイページ</a></li>
@@ -64,4 +72,11 @@ require_once './commonParts/functions.php';
                         <?php endif;?>
                     </ul>
                 </nav>
+
+            <script>
+                const menu = document.querySelector('.menu');
+                menu.addEventListener('click', function() {
+                this.classList.toggle('toggle');
+                });
+            </script>
         </header>
