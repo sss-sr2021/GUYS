@@ -127,18 +127,18 @@ body.logined .create{
 
 /* responsive */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .nav-links {
         flex-direction: column;
         position:absolute;
         top: 90px;
         left: 100%;
-        width: 0px;
+        width: 250px;
         height: 18em;
         background: var(--nav-background);
         margin-top: var(--nav-height);
         transition: 0.5s ease-out;
-        /*display:none;*/
+        display:none;
     }
     .nav-links li {
          height: var(--nav-height);
@@ -153,9 +153,9 @@ body.logined .create{
     }
 
     .menu.toggle + .nav-links {
-        width: 250px;
+        /*width: 250px;*/
         transform: translateX(-100%);
-         /*display:block;*/
+         display:block;
     }
     nav{
         /*display:none;*/
