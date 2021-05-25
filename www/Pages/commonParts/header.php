@@ -35,16 +35,23 @@ require_once './commonParts/functions.php';
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
-<body>
+<body class="<?php if(!empty($_SESSION['logined'])){ ?> logined <?php } ?>">
     <div class='wrapper'>
         <header style="">
-            <a href="top.php"><img src="../images/logo.png" alt="ロゴ画像" width="80px" height="80px"/></a>
-            <h1><?= $h1 ?></h1>
-            <?php if(empty($_SESSION['logined'])):?><!--ログインしていなければ-->
-                <a href ="createAccount.php">アカウント作成</a>
-            <?php endif;?>
+
+            <div class="head">
+                <a href="top.php"><img src="../images/logo.png" alt="ロゴ画像" width="100px" height="100px"/></a>
+                <div class="title">
+                    <h1><?= $h1 ?></h1>
+                </div>
+                <div class="create">
+                    <?php //if(empty($_SESSION['logined'])):?><!--ログインしていなければ-->
+                    <a href ="createAccount.php">アカウント作成</a>
+                </div>
+            </div>
+            <?php //endif;?>
                 <nav>
-                    <ul>
+                    <ul class="nav-links">
                         <li><a href="top.php">TOP</a></li>
                         <li><a href="./commonParts/myPagebifurcation.php">マイページ</a></li>
                         <?php if(empty($_SESSION['logined'])):?><!--ログインしていなければ-->
