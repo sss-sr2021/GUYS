@@ -11,12 +11,14 @@
 */
 ?>
 
-<footer>
-            <a href="top.php">TOP</a>
-            <a href="company.php">漢委員会</a>
-            <a href="privacy.php">プライパシーポリシー</a>
-            <p>Copyright © 2021 チーム漢. All rights reserved.</p>
-        </footer>
+    <footer>
+        <ul class="ulfooter">
+            <li><a href="top.php">TOP</a></li>
+            <li><a href="company.php">漢委員会</a></li>
+            <li><a href="privacy.php">プライパシーポリシー</a></li>
+        </ul>
+        <p class="copyright">Copyright © 2021 チーム漢. All rights reserved.</p>
+    </footer>
      </div>
  </body>
 </html>

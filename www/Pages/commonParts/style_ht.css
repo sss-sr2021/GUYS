@@ -8,3 +8,21 @@ Created:2021.05.25
 updated:2021.05.25
 
 */
+
+footer{
+    background-color:rgb(194, 191, 191);
+}
+
+.copyright{
+    text-align:center;
+    font-size:10px;
+    
+}
+
+.ulfooter{
+    list-style:none;
+    font-size:12px;
+    padding:5px;
+}
+
+
