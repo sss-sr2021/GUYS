@@ -6,6 +6,8 @@
  * Version :0.1.1 //パスワードでの照合を削除
  * create :2021.05.20
  * Update :2021.05.20 伊藤
+ *         2021.05.24 花岡//セッション情報更新の処理追加
+ * 
  * $user :セッションにあるユーザー情報
  * $ok :成功した場合にtrueを入れ、trueの場合のみアラートを表示させるための変数
  * 
@@ -29,7 +31,9 @@
              //パスワードの確認欄は削除
              //'pass' => password_hash(filter_input(INPUT_POST,'password'),PASSWORD_DEFAULT), //:pass入力された値を入れる、暗号化も
              'id' => $user["id"]  //:idはセッションにある値を入れる
-         ]);
+        ]);
+        $_SESSION['logined']['name']=filter_input(INPUT_POST,'name');//成功したらセッションの値を更新
+        $_SESSION['logined']['gender']=filter_input(INPUT_POST,'gender');//上に同じ
         $ok=true; //成功したので、trueにする。
     }
     else{

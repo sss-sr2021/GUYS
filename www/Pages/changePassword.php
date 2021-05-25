@@ -7,6 +7,7 @@
  * create :2021.05.20
  * Update :2021.05.20 伊藤
  *         2021.05.23 花岡//エラーメッセージにpタグ追加
+ *         2021.05.24 花岡//セッション情報更新の処理追加
  * 
  * $user :セッションにあるユーザー情報
  * $pass :入力されたパスワード
@@ -35,7 +36,8 @@
                 $ret = $sth->execute([
                      'pass' => password_hash($new_password,PASSWORD_DEFAULT), //入力された値を入れる、暗号化も
                      'id' => $user["id"]  //:idはセッションにある値を入れる
-                 ]);
+                ]);
+                $_SESSION['logined']['pass']=password_hash($new_password,PASSWORD_DEFAULT);//セッション情報更新
                 $ok=true; //成功したので、trueにする。
                 }
                 else{
