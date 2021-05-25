@@ -11,6 +11,7 @@ updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
         2021.05.23 花岡//getLoginUserのエラー回避処理の追加
                     //myPageBi関数にsession_start追加
                     //loginBi関数の追加：ログインしていなければログインページへ遷移する
+        2021.05.24 花岡//userRank関数の追加：ユーザーの階級を返す
 */
 
 
@@ -184,4 +185,49 @@ function loginBi(){
     if(empty($_SESSION['logined'])){    //ログインしていなければ
         header('Location:./login.php');//ログインページへ
     }
+}
+
+/*
+userRank関数：ユーザーの階級を返す
+*$a:合計マイレージ
+*return $rank:ユーザーの階級
+*/
+
+
+function userRank($a){
+    $arrRank=["お散歩級","フルマラソン級","琵琶湖１周級","北海道１周級","四国１周級","日本縦断級","アマゾン川級","万里の長城級","日本１周級","地球１周級","月まで級"];
+    if($a<42){
+        $rank=$arrRank[0];
+    }
+    elseif($a>=42&&$a<200){
+        $rank=$arrRank[1];
+    }
+    elseif($a>=200&&$a<500){
+        $rank=$arrRank[2];
+    }
+    elseif($a>=500&&$a<1200){
+        $rank=$arrRank[3];
+    }
+    elseif($a>=1200&&$a<2500){
+        $rank=$arrRank[4];
+    }
+    elseif($a>=2500&&$a<6400){
+        $rank=$arrRank[5];
+    }
+    elseif($a>=6400&&$a<8800){
+        $rank=$arrRank[6];
+    }
+    elseif($a>=8800&&$a<12000){
+        $rank=$arrRank[7];
+    }
+    elseif($a>=12000&&$a){
+        $rank=$arrRank[8];
+    }
+    elseif($a>=40000&&$a){
+        $rank=$arrRank[9];
+    }
+    elseif($a>360000){
+        $rank=$arrRank[10];
+    }
+    return $rank;
 }

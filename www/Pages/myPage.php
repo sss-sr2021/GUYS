@@ -83,6 +83,8 @@
         "";
     }
     $nowUsers=dbExe("SELECT * FROM users WHERE id=".$_SESSION['logined']['id']);
+    $rank=userRank($nowUsers[0]['sum_mileage']);//合計マイレージ値に応じた階級
+
 ?>
 <?php
 $pageTitle = "マイページ";
@@ -116,7 +118,7 @@ include('./commonParts/header.php');
                     <!--  後々データベースからもってくる、下は仮 階級はif文？？-->
                         <p>・<?= $nowUsers[0]['point'] ?>ポイント</p>
                         <p>・<?= $nowUsers[0]['sum_mileage'] ?>km</p>
-                        <p>・〇〇級</p>
+                        <p>・<?= $rank ?></p>
                     <p>●階級一覧</p>
                         <ul name='rank'>
                             <li>0km → お散歩級</li>
