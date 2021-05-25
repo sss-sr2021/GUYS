@@ -8,6 +8,7 @@
  * Update :2021.05.20 伊藤
  *         2021.05.23 花岡//エラーメッセージにpタグ追加
  *         2021.05.24 花岡//セッション情報更新の処理追加
+ *         2021.05.25 花岡//メアド変更時、すでにDBにあるメアドには変更できないように
  * 
  * $user :セッションにあるユーザー情報
  * $pass :入力されたパスワード
@@ -28,6 +29,13 @@
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
     if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
+        $emailFromUsers="SELECT email FROM users";
+        foreach($dbh->query($emailFromUsers) as $row){//DBに同じメアドがないか検索
+            if($row['email']==filter_input(INPUT_POST,'email')){//usersテーブルのメールアドレスと入力されたメールアドレスが一致すれば
+                $error_message.="そのメールアドレスは既に存在します。";//エラーメッセージの追加
+            }
+        }
+        if(empty($error_message)){//エラーメッセージがなければ
             if(password_verify($pass,$user['pass'])){ //passwordを照合して一致すれば、以下を実行
                 if(@$new_email == @$new_email2){ //新しいメールアドレスともう一度入力されたメールアドレスを照合して一致すれば、以下を実行
                 $sth = $dbh-> prepare(  //idが同じならメールアドレスを変更する
@@ -46,6 +54,7 @@
             }else{
                 $error_message .= '変更に失敗しました。';
             }
+        }
     }
     else{
         "";
