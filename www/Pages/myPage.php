@@ -23,6 +23,7 @@
     $user = $_SESSION['logined'];
     $_SESSION['todayMileage'] = 0;//今日のマイレージ
     $today = date("Y-m-d");//今日の日付
+    $todayMileage=round(filter_input(INPUT_POST,'mileage'));//入力マイレージを四捨五入
     if(!empty($_POST['submit'])){ //もしsubmitが押されれば以下を実行する
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         if(!empty($_SESSION["logined"][$today]) ||@$_SESSION["logined"][$today] ==='' ||@$_SESSION["logined"][$today]==="0"){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
@@ -52,7 +53,7 @@
                 );
                 $ret = $sth->execute([
                     'date' => $today,
-                    'mileage' => filter_input(INPUT_POST,'mileage'),
+                    'mileage' => $todayMileage,
                     'user_id' => filter_input(INPUT_POST,'user_id')
                 ]);
         }
@@ -74,7 +75,7 @@
             );
             $ret = $sth->execute([
                 'date' => $today, //dateに今日の日付を入れる
-                'mileage' => filter_input(INPUT_POST,'mileage'),  //mileageに入力された値を入れる
+                'mileage' => $todayMileage,  //mileageに入力された値を入れる
                 'user_id' => filter_input(INPUT_POST,'user_id') //user_idにidを値を入れる
             ]);
         }

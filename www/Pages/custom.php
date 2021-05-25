@@ -6,6 +6,7 @@
  * Version :0.0.1
  * create :2021.05.20
  * Update :2021.05.20 花岡
+ *         2021.05.25 花岡//セッション情報を更新するように変更
  * 
  * $theme :テーマを1(所持)か0(未所持)かで入れる
  * 
@@ -62,7 +63,7 @@ include('./commonParts/header.php');
         <main>
             <script>
                 function imgClick(theme){ //画像がクリックされた時
-                        var result = confirm('このテーマにしますか？');
+                        var result = confirm('このテーマに決定しますか？');
                         if(result){
                             $('#theme').val(theme);
                             $('#themeForm').submit();//formに送信
@@ -74,7 +75,7 @@ include('./commonParts/header.php');
                 <a href="shop.php">ショップ</a><br />
                 <?php
                 //ユーザーのが所持済のカスタムテーマを表示する。参照先：shop_infoテーブル
-                print_r($_SESSION['logined']);
+                $_SESSION['logined']["current_theme"]=$rows2[0]["current_theme"];//選択したテーマをセッションの保存
                     foreach($theme as  $key => $value){
                         if(empty($value)){  //空(0(未所持))だったらスキップして次のthemeの処理へ
                             continue;
