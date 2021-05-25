@@ -63,9 +63,9 @@
     ]);
     $rows2 = $sth->fetchAll();
 
-    $theme[1] = $rows[0]["theme1"];
-    $theme[2] = $rows[0]["theme2"];
-    $theme[3] = $rows[0]["theme3"];
+    $theme[1] = @$rows[0]["theme1"];
+    $theme[2] = @$rows[0]["theme2"];
+    $theme[3] = @$rows[0]["theme3"];
 ?>
 <?php
 $pageTitle = "ショップ";

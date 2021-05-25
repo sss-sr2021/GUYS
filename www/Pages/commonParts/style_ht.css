@@ -104,3 +104,52 @@ article{
 
 
 /* 管理者ページ */
+
+.admin{
+    padding:15px;
+}
+
+.adminh2{
+
+}
+
+.adminsubmit{
+    padding-top:10px;
+}
+
+.adminform{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+th{
+    background-color: rgb(189, 209, 246);
+}
+
+td{
+    text-align:center;
+}
+
+.adminbutton{
+    width: 50px;
+    height: 30px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid #aaa;
+    background-image: none;
+    background-color: rgb(123, 204, 241);
+    font-size: 10px;
+    color: rgb(12, 12, 12);
+    cursor:pointer;
+}
+.adminbutton:active{
+    border-bottom: none;
+    background-color: rgb(182, 238, 248);
+}

@@ -41,8 +41,8 @@ include('./commonParts/header.php');
 ?>
     <div class='container'>
         <main class="admin">
-            <h2>アカウント情報一覧</h2>
-            <form action="" method="post">
+            <form action="" method="post" class="adminform">
+            <h2 class="adminh2">アカウント情報一覧</h2>
                 <table border="1" id="table">
                     <tr>
                         <th></th>
@@ -69,10 +69,11 @@ include('./commonParts/header.php');
                     endforeach;
                     ?>
                 </table>
-                <input type="submit" name="delete" value="削除" onclick="return confirm('本当に削除しますか？')">
+                    <div class="adminsubmit">
+                        <input type="submit" name="delete" value="削除" class="adminbutton" onclick="return confirm('本当に削除しますか？')">
+                    </div>
             </form>
                 <script>
-
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
                         alert('削除しました'); 
                         location.href = 'commonParts/toAdmin.php';//外部ファイルに一度飛んでadmin.phpに戻る。
