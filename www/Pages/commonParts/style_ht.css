@@ -9,6 +9,8 @@ updated:2021.05.25
 
 */
 
+/* トップページ */
+
 footer{
     background-color:rgb(194, 191, 191);
 }
@@ -78,4 +80,27 @@ article{
         font-size:30px;
         text-shadow: 6px 4px 2px azure;    
     }
+
+    .h2GO{
+        font-size:20px;
+        text-shadow: 6px 4px 2px rgb(166, 228, 243);
+    }
+
+    .h3GO{
+        text-shadow: 6px 4px 2px rgb(190, 232, 243);
+    }
+
+    .GO{
+        overflow: auto;
+        scroll-snap-type: y mandatory;
+        height: 30vh;
+    }
+    article{
+        scroll-snap-align:center;
+        height: 30vh;
+    }
+    
 }
+
+
+/* 管理者ページ */

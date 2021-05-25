@@ -40,7 +40,7 @@ $h1 ="管理者ページ";
 include('./commonParts/header.php');
 ?>
     <div class='container'>
-        <main>
+        <main class="admin">
             <h2>アカウント情報一覧</h2>
             <form action="" method="post">
                 <table border="1" id="table">
@@ -69,9 +69,10 @@ include('./commonParts/header.php');
                     endforeach;
                     ?>
                 </table>
-                <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                <input type="submit" name="delete" value="削除" onclick="return confirm('本当に削除しますか？')">
             </form>
                 <script>
+
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
                         alert('削除しました'); 
                         location.href = 'commonParts/toAdmin.php';//外部ファイルに一度飛んでadmin.phpに戻る。
