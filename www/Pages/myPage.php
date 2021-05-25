@@ -11,6 +11,8 @@
  *                        (usersテーブルsum_mileage列の処理の追加)
  *                         $_SESSION["logined"][$today]:今日のマイレージ
  *         2021.05.24 花岡//ポイント付与の処理の追加
+ *         2021.05.25 花岡//マイル登録にrequired追加
+ * 
  * 
 */
 
@@ -125,7 +127,7 @@ include('./commonParts/header.php');
                     <h3>入力フォーム</h3>
                     <p>今日のマイル</p>
                     <form method="post" action="myPage.php">
-                        <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0">km</p><!-- 初期値0 最小値0-->
+                        <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  required>km</p><!-- 初期値0 最小値0-->
                         <p><input type="submit" name="submit" value="送信"></p>
                         <input type="hidden" name="user_id" value="<?= $user['id']?>">
                     </form>
