@@ -16,28 +16,30 @@
     $user = $_SESSION['logined'];
 
 
+    //購入したら100ポイント減らす処理(usersからpointを100減らす)
     if(@$_POST['point']){
-        //usersからpointを100減らす
         $dbh = dbInit();
-        $sql2 = "UPDATE users SET point=point-100 WHERE id = :id"; //セッションのIDとデータベースのidを照合
+        $sql2 = "UPDATE users SET point=point-100 WHERE id = :id"; //セッションのIDとデータベースのidを照合し、ポイントを100減らす
         $sth = $dbh->prepare($sql2);
         $exc = $sth->execute([
             'id' => $user["id"], //セッションのID
         ]);
         $rows2 = $sth->fetchAll();
 
-        //shop_infoからデータを取得
+    //購入したら購入したテーマを1にする処理
         $getTheme = (integer)filter_input(INPUT_POST, 'theme');
         $dbh = dbInit();
-        //セッションのIDとデータベースのuser_idを照合
+        //セッションのIDとデータベースのuser_idを照合し、解放したthemeを1にする
         if($getTheme > 0){ //未所持の0
         $sql = "UPDATE shop_info SET theme{$getTheme}=1 WHERE user_id = :user_id"; //所持済みの１
-        $sth = $dbh->prepare($sql);     //shop_infoテーブルの中のすべての列を検索
+        $sth = $dbh->prepare($sql);
         $exc = $sth->execute([
             'user_id' => $user["id"], //セッションのID
         ]);
         $rows = $sth->fetchAll();
     }}
+
+
 
     //shop_infoからデータを取得
     $dbh = dbInit();
@@ -82,7 +84,7 @@ include('./commonParts/header.php');
                         var result = confirm('購入しますか？（購入後のポイント数：<?= $rows2[0]["point"] -100 ?>pt）');
                         if(result){
                             $('#theme').val(theme);
-                            $('#themeForm').submit();
+                            $('#themeForm').submit();//formに送信
                         }
                     }
                 }
@@ -96,11 +98,11 @@ include('./commonParts/header.php');
                         if(!empty($value)){  //0(未所持)の場合のみ表示
                             continue;
                         }
-                        echo "<img src='../images/theme{$key}.png ' alt='theme{$key}' name='{$key}' width='500' height='280' onclick='imgClick({$key})' />" . 
+                        echo "<img src='../images/theme{$key}.png' alt='theme{$key}' name='{$key}' width='500' height='280' onclick='imgClick({$key})' />" . 
                         "<p>theme{$key}:100pt</p>" ;   
                     }
                 ?>
-                <form id="themeForm" method="post"> <!-- 自分に送ってる -->
+                <form id="themeForm" method="post"> <!-- 自分に送ってる（上のSQL文で使いたいため） -->
                     <input type="hidden" id="theme" name="theme" value="">
                     <input type="hidden" id="point" name="point" value="-100">
                 </form>
