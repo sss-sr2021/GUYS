@@ -142,7 +142,7 @@ include('./commonParts/header.php');
                     <ul class="userData">
                         <li><p>所持ポイント:<?= $nowUsers[0]['point'] ?>ポイント</p></li>
                         <li><p>累計マイレージ：<?= $nowUsers[0]['sum_mileage'] ?>km</p></li>
-                        <li><p>あなたの階級：<?= $rank ?></p></li>
+                        <li><p>階級：<?= $rank ?></p></li>
                     </ul>
                     <p class="rankList">▼階級一覧</p>
                         <ul class='rank'>
