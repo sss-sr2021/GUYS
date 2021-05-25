@@ -153,3 +153,21 @@ button{
 .rankingMileage{
     float:right;
 }
+
+.themes{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+    text-align: center;
+    margin-left:3%;
+}
+
+.theme img{
+    width:100%;
+    cursor:pointer;
+}

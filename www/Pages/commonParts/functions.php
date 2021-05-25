@@ -146,6 +146,8 @@ logout関数：ログアウト、セッションの中身を空にする。
 */
 
 function logout(){
+    $_SESSION['span']=null;
+    $_SESSION['theme']=null;
     $_SESSION['logined'] = null; //セッション変数の値をnullにする。
 }
 

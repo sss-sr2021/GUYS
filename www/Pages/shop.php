@@ -92,16 +92,18 @@ include('./commonParts/header.php');
             <h2>カスタムテーマショップ</h2>
                 <p>所持ポイント：<?= $rows2[0]["point"] ?>pt</p>
                 <a href="custom.php">カスタム</a><br />
+                <div class="theme">
                 <?php
                 //未所持のカスタムテーマの表示。ユーザーのが未所持のカスタムテーマを表示する。参照先：shop_infoテーブル
                     foreach($theme as  $key => $value){
                         if(!empty($value)){  //0(未所持)の場合のみ表示
                             continue;
                         }
-                        echo "<img src='../images/theme{$key}.png' alt='theme{$key}' name='{$key}' width='500' height='280' onclick='imgClick({$key})' />" . 
-                        "<p>theme{$key}:100pt</p>" ;   
+                        echo "<div class='themes inLineBrock'><img src='../images/theme{$key}.png' alt='theme{$key}' name='{$key}' onclick='imgClick({$key})' />" . 
+                        "<p>theme{$key}:100pt</p></div>" ;   
                     }
                 ?>
+                </div>
                 <form id="themeForm" method="post"> <!-- 自分に送ってる（上のSQL文で使いたいため） -->
                     <input type="hidden" id="theme" name="theme" value="">
                     <input type="hidden" id="point" name="point" value="-100">

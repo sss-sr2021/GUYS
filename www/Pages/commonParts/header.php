@@ -13,9 +13,13 @@
  *         2021.05.25 花岡//管理者ページリンク(管理者のみ)の追加
  * 
 */
-
 require_once './commonParts/functions.php';
 @session_start();
+if(empty(@$_SESSION['theme'])){
+    $_SESSION['theme']=1;//theme初期値
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +32,9 @@ require_once './commonParts/functions.php';
     <title><?= $pageTitle ?></title>
     <meta charset="utf-8">
     <script src="/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="./commonParts/style.css" /><!-- 最終完成用CSSファイルの読み込み -->
+    <!-- <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:800px)"/> 完成用-->
+    <!-- <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:800px)"/> 完成用-->
+    
     <link rel="stylesheet" href="./commonParts/style_it.css" /><!-- 伊藤用CSSファイルの読み込み -->
     <link rel="stylesheet" href="./commonParts/style_ht.css" /><!-- 秦用CSSファイルの読み込み -->
     <link rel="stylesheet" href="./commonParts/style_hn.css" /><!-- 花岡用CSSファイルの読み込み -->

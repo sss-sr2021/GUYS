@@ -21,6 +21,7 @@
         $user = getLoginUser(['email' => $email]);//usersテーブルの中のすべての列の中からemailの列を検索している
         if(!empty($user)){//ログインユーザー情報があれば
             if(password_verify($pass,$user['pass'])){
+                $_SESSION['theme']=$_SESSION['logined']['current_theme'];
                 //passwordを照合して一致すれば、myPage.phpに飛ぶ
                 if($user['email'] == 'admin@sr-co.co.jp'){
                     header('Location:admin.php');
