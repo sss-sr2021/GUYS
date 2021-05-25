@@ -30,13 +30,13 @@
                 }
             }else{//パスワードが間違っていれば
                 logout();
-                $message= 'メールアドレスまたはパスワードが違います。1';
+                $message= 'メールアドレスまたはパスワードが違います。';
             }
         }
         else{//ログインユーザー情報がなければ
             logout();
             $user="";
-            $message='メールアドレスまたはパスワードが違います。2';
+            $message='メールアドレスまたはパスワードが違います。';
         }
     }
 
@@ -47,7 +47,9 @@ $h1 ="ログイン";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
-         <main>
+        <main>
+
+        <div class="block">
             <h2>ログイン</h2>
             <p><?= $message?></p>
                 <form action="" method="post">
@@ -55,7 +57,9 @@ include('./commonParts/header.php');
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="submit" value="ログイン"></p>
                 </form>
-         </main>
+        </div>
+        
+        </main>
      </div>
 <?php
 include('./commonParts/footer.php');

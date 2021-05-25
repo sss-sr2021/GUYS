@@ -45,7 +45,9 @@ $h1 ="アカウント作成";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
-         <main>
+        <main>
+
+        <div class="block">
             <h2>アカウント作成</h2>
             <p><?= $message ?></p>
                 <form action="createAccount.php" method="post">
@@ -60,7 +62,9 @@ include('./commonParts/header.php');
                     <!-- 作成ボタン　-->
                     <input type="submit" name="create" value="作成">
                 </form>
-         </main>
+        </div>
+
+        </main>
      </div>
 <?php
 include('./commonParts/footer.php');

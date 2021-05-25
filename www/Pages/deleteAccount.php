@@ -20,6 +20,7 @@
         dbExe("DELETE FROM users WHERE id =".$user["id"] );//idはセッションにある値を入れる
         dbExe("DELETE FROM mileage WHERE user_id =".$user["id"] );
         dbExe("DELETE FROM shop_info WHERE user_id =".$user["id"] );
+        logout();
         $ok=true; //成功したので、trueにする。
     }
     else{
@@ -32,20 +33,25 @@ $h1 ="アカウント削除";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
-         <main>
+        <main>
+
+        <div class="block">
             <h2>アカウント削除</h2>
                 <form action="" method="post">
                     <p>アカウントを削除します。</p>
-                    <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                    <input type="submit" name="delete" value="削除" onclick="return confirm('本当に削除しますか？')">
                     <!--
                 <script>
                     alert('削除しました。');
                 </script>
                 -->
                 </form>
-         </main>
+        </div>
+        
+        </main>
      </div>
         <script>
+
         //削除した場合のみアラート表示
             <?php if($ok){ ?>  //$okがtrueの時だけアラート
             alert('削除しました'); 

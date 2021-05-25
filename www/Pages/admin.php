@@ -40,9 +40,9 @@ $h1 ="管理者ページ";
 include('./commonParts/header.php');
 ?>
     <div class='container'>
-        <main>
-            <h2>アカウント情報一覧</h2>
-            <form action="" method="post">
+        <main class="admin">
+            <form action="" method="post" class="adminform">
+            <h2 class="adminh2">アカウント情報一覧</h2>
                 <table border="1" id="table">
                     <tr>
                         <th></th>
@@ -69,7 +69,9 @@ include('./commonParts/header.php');
                     endforeach;
                     ?>
                 </table>
-                <input type="submit" name="delete" value="削除" onclick="alert('本当に削除しますか？')">
+                    <div class="adminsubmit">
+                        <input type="submit" name="delete" value="削除" class="adminbutton" onclick="return confirm('本当に削除しますか？')">
+                    </div>
             </form>
                 <script>
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート
