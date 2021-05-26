@@ -7,6 +7,7 @@
  * create :2021.05.20
  * Update :2021.05.20 伊藤
  *         2021.05.24 花岡//セッション情報更新の処理追加
+ *         2021.05.25 秦//名前入力の桁数制限を追加
  * 
  * $user :セッションにあるユーザー情報
  * $ok :成功した場合にtrueを入れ、trueの場合のみアラートを表示させるための変数
@@ -52,7 +53,7 @@ include('./commonParts/header.php');
         <div class="block">
             <h2>プロフィール情報変更</h2>
                 <form action="" method="post">
-                    <p>お名前：<input type="text" name="name" required></p>
+                    <p>お名前：<input type="text" name="name" pattern=".{1,20}" required></p>
                     <p>性別：
                     <label><input type="radio" name="gender" value="M" required/>男</label>
                     <label><input type="radio" name="gender" value="F" />女</label>
