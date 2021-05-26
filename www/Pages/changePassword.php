@@ -64,8 +64,8 @@ include('./commonParts/header.php');
                     <p><?= $error_message ?></p>
                     <form action="" method="post">
                         <p>現在のパスワード：<input type="password" name="password" required></p>
-                        <p>新しいパスワード：<input type="password" name="new_password" required></p>
-                        <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="new_password2" required></p>
+                        <p>新しいパスワード：<input type="password" name="new_password" placeholder="半角英数字8～16文字" required></p>
+                        <p>新しいパスワード：<br />(確認のためもう一度)<input type="password" name="new_password2" placeholder="半角英数字8～16文字" required></p>
                         <p><input type="submit" name="change" value="変更"></p>
                     </form>
                 </div>
