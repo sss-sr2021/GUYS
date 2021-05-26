@@ -11,6 +11,7 @@
  *         2021.05.23 花岡//ログイン・ログアウトの分岐の明示化
  *                        //未ログイン時のみアカウント作成リンク表示
  *         2021.05.25 花岡//管理者ページリンク(管理者のみ)の追加
+ *         2021.05.26 秦//SEOの追加
  * 
  *  $_SESSION['theme']:現在の設定テーマ
  * 
@@ -33,6 +34,9 @@ if(empty(@$_SESSION['theme'])){
 <head>
     <title><?= $pageTitle ?></title>
     <meta charset="utf-8">
+    <meta name="robots" content="index,follow">
+    <meta name=“description” content="輝く明日へGO！あなたの健康への第一歩を後押しする。あなたの頑張りを入力するだけ。健康のために走った距離、歩いた距離を日々、入力するだけで自分がどれくらいの距離を進んだのか一目で分かる。">
+    <meta name="keywords" content="リサーチGO！,健康,頑張り">
     <script src="/jquery-3.6.0.js"></script>
     <!-- <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:800px)"/> 完成用-->
     <!-- <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:800px)"/> 完成用-->
