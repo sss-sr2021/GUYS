@@ -437,7 +437,8 @@ nav {
     padding: 0 0px;
     align-items: center;
     width: 100%;
-    background-color:rgb(155, 236, 117);
+    
+    background:linear-gradient(rgb(187, 255, 156), rgb(113, 199, 73));
     flex-wrap:nowrap;
 }
 /* アカウント作成リンク */

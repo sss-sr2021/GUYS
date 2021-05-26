@@ -516,7 +516,7 @@ nav {
     padding: 0 0px;
     align-items: center;
     width: 100%;
-    background-color:pink;
+    background:linear-gradient(pink, rgb(255, 156, 173));
     flex-wrap:nowrap;
 }
 /* アカウント作成リンク */

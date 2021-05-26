@@ -505,7 +505,7 @@ nav {
     padding: 0 0px;
     align-items: center;
     width: 100%;
-    background-color:rgb(161, 232, 253);
+    background:linear-gradient(rgb(161, 232, 253), rgb(75, 213, 255));
     flex-wrap:nowrap;
 }
 /* アカウント作成リンク */
