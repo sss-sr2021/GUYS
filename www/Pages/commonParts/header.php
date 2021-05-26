@@ -38,8 +38,8 @@ if(empty(@$_SESSION['theme'])){
     <meta name=“description” content="輝く明日へGO！あなたの健康への第一歩を後押しする。あなたの頑張りを入力するだけ。健康のために走った距離、歩いた距離を日々、入力するだけで自分がどれくらいの距離を進んだのか一目で分かる。">
     <meta name="keywords" content="リサーチGO！,健康,頑張り">
     <script src="/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:800px)"/> 
-    <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:800px)"/> 
+    <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:768px)"/> 
+    <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:767px)"/> 
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>

@@ -71,28 +71,35 @@ updated:2021.05.25aaaa
 
 /* myPage */
 .mile{
+    text-align: center;
     padding: 0.5em 1em;
     margin: 2em 0;
-    margin-left:10px;
+    
     margin-right:10px;
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
     border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
-    width:30%;
+    width:100%;
 }
 .MENU{
+    text-align: center;
     padding: 0.5em 1em;
+    margin-left: 5%;
     margin: 2em 0;
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
     border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
-    width:30%;
+    width:100%;
+}
+.MENU2{
+    display: none!important;
 }
 .user{
+    text-align: center;
     padding: 0.5em 1em;
     margin: 2em 0;
     font-weight: bold;
@@ -100,7 +107,7 @@ updated:2021.05.25aaaa
     background: #FFF;
     border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
-    width:30%;
+    width:100%;
     
 }
 .userData{
@@ -120,12 +127,11 @@ updated:2021.05.25aaaa
     color:#207af0;
     
 }
-.matome{
-    width: 80%;
-    margin:auto;
-}
+
 /* ranking.php */
 .Ranking{
+    margin-top: 0%;
+    margin-left: 10%;
     padding: 0.5em 1em;
     margin: 2em 0;
     font-weight: bold;
@@ -133,7 +139,7 @@ updated:2021.05.25aaaa
     background: #FFF;
     border: solid 3px #207af0;;/*線*/
     border-radius: 10px;/*角の丸み*/
-    width:60%;
+    width:100%;
 }
 .Ranking h2{
     border-top-style: solid;
@@ -151,19 +157,19 @@ updated:2021.05.25aaaa
     text-align: right;
 }
 .spanButton{
-
+    width:100%;
     color:#207af0;
     text-align: center;
     margin-bottom: 5px;
 }
 button{
-    width:20%;
+    width:23%;
     background:#207af0;
     color:#fff;
     border:none;
     position:relative;
-    height:60px;
-    font-size:1.2em;
+    height:30px;
+    font-size:0.8em;
     padding:0 2em;
     cursor:pointer;
     transition:800ms ease all;
@@ -203,8 +209,8 @@ button{
 
 .rankingRank{
     text-align:left;
-    margin-left:25%;
-    margin-right:5%;
+    margin-left:10%;
+    margin-right:10%;
 }
 .rankingName{
     text-align:center;
@@ -233,6 +239,10 @@ button{
     border:solid 1px #207af0;
 }
 
+.themes p{
+    font-size:10%;
+}
+
 /*
 
 style_ht.css:秦編集用スタイルシート
@@ -255,9 +265,13 @@ footer{
     font-size:10px;
     
 }
-
 .ulfooter{
+    text-align: center;
+}
+.ulfooter li{
+    
     list-style:none;
+    display:inline;
     font-size:12px;
     padding:5px;
 }
@@ -280,7 +294,7 @@ div.images{
     padding-left:10px;
 }
 
-article{
+.reserchGO{
     margin-top:3%;
     margin-bottom:3%;
 }
@@ -299,7 +313,7 @@ article{
     scroll-snap-type: y mandatory;
     height: 30vh;
 }
-article{
+.reserchGO{
     scroll-snap-align:center;
     height: 30vh;
 }
@@ -328,7 +342,7 @@ article{
         scroll-snap-type: y mandatory;
         height: 30vh;
     }
-    article{
+    .reserchGO{
         scroll-snap-align:center;
         height: 30vh;
     }
@@ -339,11 +353,11 @@ article{
 /* 管理者ページ */
 
 .admin{
-    padding:15px;
+    padding:0px;
 }
 
 .adminh2{
-
+    text-align: center;
 }
 
 .adminsubmit{
@@ -357,6 +371,13 @@ article{
     background: #FFF;
     border: solid 3px #6091d3;/*線*/
     border-radius: 10px;/*角の丸み*/
+    width:100%;
+    margin:0%;
+}
+table{
+    font-size:3%;
+    width:100%;
+    margin:0%;
 }
 
 th{
@@ -368,6 +389,8 @@ td{
 }
 
 .adminbutton{
+    margin-left:40%;
+    
     width: 50px;
     height: 30px;
     padding: 5px 8px;
@@ -426,12 +449,20 @@ nav {
 }
 
 /*タイトル*/
+.title{
+    z-index:10;
+}
 .title h1 {
-    font-size: 40px;
+    width:110%;
+    font-size:130%;;
+    margin-left: 0%;
+    text-align: center;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 3px;
+    
 }
+
 
 /* nav-links */
 
@@ -467,9 +498,10 @@ nav {
 }
 /* アカウント作成リンク */
 .create{
+    font-size: 80%;
     text-align:left;
     margin:auto;
-    margin-right:10px;
+    margin-right:10%;
 }
 body.logined .create{
     visibility:hidden;
@@ -489,7 +521,6 @@ body.logined .create{
     border: none;
     outline: none;
     display: none;
-    width:0px;
 }
 
 .menu .bar {
@@ -529,14 +560,15 @@ body.logined .create{
 .nav-links {
     flex-direction: column;
     position:absolute;
-    top: 105px;
+    top:60px;
     left: 100%;
-    width: 250px;
-    height: 18em;
+    width: 150px;
+    height: 16em;
     background: var(--nav-background);
     margin-top: var(--nav-height);
     transition: 0.5s ease-out;
     display:none;
+    z-index:10;
     }
 .nav-links li {
      height: var(--nav-height);
@@ -563,20 +595,23 @@ body.logined .create{
 .block{
     padding: 0.5em 1em;
     margin: 2em 0;
-    margin-left:25%;
+    margin-left:0%;
     /*margin-right:10px;*/
     font-weight: bold;
     color: #6091d3;/*文字色*/
     background: #FFF;
     border: solid 3px #6091d3;/*線*/
     border-radius: 10px;/*角の丸み*/
-    width:40%;
+    width:100%;
     line-height: 3em; /*行間*/
 }S
 
 /**/
-h1{
-    margin-left: auto;
-    margin-right: auto;
+.ulfooter{
+    display:flex;
 }
 
+.head img{
+    width:60px;
+    height:auto;
+}

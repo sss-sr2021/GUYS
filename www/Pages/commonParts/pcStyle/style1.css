@@ -423,7 +423,7 @@ nav {
 .create{
     text-align:left;
     margin:auto;
-    margin-right:10px;
+    margin-right:5%;
 }
 body.logined .create{
     visibility:hidden;

@@ -141,7 +141,7 @@ include('./commonParts/header.php');
         </script>
         <main>
             <div class="matome">
-                <div class="MENU inLineBrock">
+                <div class="MENU MENU2 inLineBrock">
                     <h3>MENU</h3>
                     <a href="top.php">▶トップページ</a><br />
                     <a href="myPage.php">▶マイページ</a><br />
