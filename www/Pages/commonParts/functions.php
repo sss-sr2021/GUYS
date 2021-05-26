@@ -12,6 +12,7 @@ updated:2021.05.21（loginout関数、logout関数、myPageBi関数の追加）
                     //myPageBi関数にsession_start追加
                     //loginBi関数の追加：ログインしていなければログインページへ遷移する
         2021.05.24 花岡//userRank関数の追加：ユーザーの階級を返す
+        2021.05.26 花岡//ログアウト時session_destroy()の追加
 */
 
 
@@ -149,6 +150,7 @@ function logout(){
     $_SESSION['span']=null;
     $_SESSION['theme']=null;
     $_SESSION['logined'] = null; //セッション変数の値をnullにする。
+    session_destroy();
 }
 
 /*
