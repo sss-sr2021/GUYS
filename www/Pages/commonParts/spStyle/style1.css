@@ -41,3 +41,542 @@ updated:2021.05.25
     transform: translateX(-100%);
     display:block;
 }
+
+/*
+*/
+
+/*
+
+style1.css:最終完成用スタイルシート
+
+PC用：theme1
+
+Author:花岡 宗史
+Version:0.0.1
+Created:2021.05.25
+updated:2021.05.25
+
+*/
+/*
+
+style_hn.css:花岡編集用スタイルシート
+
+Author:花岡 宗史
+Version:0.0.1
+Created:2021.05.25
+updated:2021.05.25aaaa
+
+*/
+
+
+/* myPage */
+.mile{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    margin-left:10px;
+    margin-right:10px;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+}
+.MENU{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+}
+.user{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+    
+}
+.userData{
+    list-style: none;
+}
+.rank{
+    list-style: none;
+}
+.inLineBrock{
+    display: inline-block;  
+    vertical-align: top;
+    
+}
+.inLineBrock h3{
+    border-bottom-style: solid;
+    border-bottom-color:#207af0;
+    color:#207af0;
+    
+}
+.matome{
+    width: 80%;
+    margin:auto;
+}
+/* ranking.php */
+.Ranking{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:60%;
+}
+.Ranking h2{
+    border-top-style: solid;
+    border-top-color:#207af0;
+    text-align: center;
+    color:#207af0;
+}
+.totalRank li{
+    list-style: none;
+}
+.spanData{
+    border-top-style: solid;
+    border-top-color:#207af0;
+    color:#207af0;
+    text-align: right;
+}
+.spanButton{
+
+    color:#207af0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+button{
+    width:20%;
+    background:#207af0;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.2em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    
+  }
+  button:hover{
+    background:#fff;
+    color:#207af0;
+  }
+  button:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #207af0;
+    transition:400ms ease all;
+  }
+  button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+.yourRank{
+    border:solid;
+    text-align: right;
+}
+
+
+.rankingRank{
+    text-align:left;
+    margin-left:25%;
+    margin-right:5%;
+}
+.rankingName{
+    text-align:center;
+    width:50%;
+}
+.rankingMileage{
+    float:right;
+}
+
+.themes{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #207af0;;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:30%;
+    text-align: center;
+    margin-left:3%;
+}
+
+.theme img{
+    width:100%;
+    cursor:pointer;
+    border:solid 1px #207af0;
+}
+
+/*
+
+style_ht.css:秦編集用スタイルシート
+
+Author:秦 伊吹
+Version:0.0.1
+Created:2021.05.25
+updated:2021.05.25
+
+*/
+
+/* トップページ */
+
+footer{
+    background-color:rgb(194, 191, 191);
+}
+
+.copyright{
+    text-align:center;
+    font-size:10px;
+    
+}
+
+.ulfooter{
+    list-style:none;
+    font-size:12px;
+    padding:5px;
+}
+
+
+div.images{
+    width:100%;
+    height:70vh;
+    background-image:url("  ../../../images/yam0080-009.jpg");
+    background-size:100%;
+    background-position:center;
+    background-repeat: no-repeat; 
+}
+
+.inimages{
+    font-size:50px;
+    text-shadow: 6px 4px 2px azure;
+    font-family:serif;
+    font-weight:bold;
+    padding-left:10px;
+}
+
+article{
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+.h2GO{
+    font-size:40px;
+    text-shadow: 6px 4px 2px rgb(166, 228, 243);
+}
+
+.h3GO{
+    text-shadow: 6px 4px 2px rgb(190, 232, 243);
+}
+
+.GO{
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    height: 30vh;
+}
+article{
+    scroll-snap-align:center;
+    height: 30vh;
+}
+
+/* responsive */
+    div.images{
+        height:30vh;
+    }
+    
+    .inimages{
+        font-size:30px;
+        text-shadow: 6px 4px 2px azure;    
+    }
+
+    .h2GO{
+        font-size:20px;
+        text-shadow: 6px 4px 2px rgb(166, 228, 243);
+    }
+
+    .h3GO{
+        text-shadow: 6px 4px 2px rgb(190, 232, 243);
+    }
+
+    .GO{
+        overflow: auto;
+        scroll-snap-type: y mandatory;
+        height: 30vh;
+    }
+    article{
+        scroll-snap-align:center;
+        height: 30vh;
+    }
+    
+
+
+
+/* 管理者ページ */
+
+.admin{
+    padding:15px;
+}
+
+.adminh2{
+
+}
+
+.adminsubmit{
+    padding-top:10px;
+}
+
+.adminform{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+th{
+    background-color: rgb(189, 209, 246);
+}
+
+td{
+    text-align:center;
+}
+
+.adminbutton{
+    width: 50px;
+    height: 30px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid #aaa;
+    background-image: none;
+    background-color: rgb(123, 204, 241);
+    font-size: 10px;
+    color: rgb(12, 12, 12);
+    cursor:pointer;
+}
+.adminbutton:active{
+    border-bottom: none;
+    background-color: rgb(182, 238, 248);
+}
+
+/*
+
+style_it.css:伊藤編集用スタイルシート
+
+Author:伊藤 明洋
+Version:0.0.1
+Created:2021.05.25
+updated:2021.05.25
+
+*/
+
+
+/*
+    headerのcss(レイアウト、ナビゲーションバー)
+*/
+
+/*全体共通*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --nav-height: 8vh; /* ナビゲーションバーの立幅 */
+    --nav-background: rgb(180, 180, 180); /*ナビゲーションバーの背景色*/
+}
+
+/*ナビゲーションバー*/
+nav {
+    display: flex;
+    padding: 0 50px;
+    align-items: center;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--nav-background);
+}
+
+/*タイトル*/
+.title h1 {
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* nav-links */
+
+.nav-links {
+    display: flex;
+    height: var(--nav-height);
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0 15px;
+    height: var(--nav-height);
+    line-height: var(--nav-height);
+    text-align: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+    position: relative;
+}
+
+/* ロゴ画像、タイトル、アカウント作成リンク */
+.head{
+    display: flex;
+    padding: 0 0px;
+    align-items: center;
+    width: 100%;
+    background-color:rgb(161, 232, 253);
+    flex-wrap:nowrap;
+}
+/* アカウント作成リンク */
+.create{
+    text-align:left;
+    margin:auto;
+    margin-right:10px;
+}
+body.logined .create{
+    visibility:hidden;
+}
+/* ナビゲーションバーの棒 */
+.menu{
+    text-align:left;
+    margin:auto;
+    margin-right:10px;
+}
+
+/* menu */
+
+.menu {
+    cursor: pointer;
+    background: var(--nav-background);
+    border: none;
+    outline: none;
+    display: none;
+    width:0px;
+}
+
+.menu .bar {
+    width: 20px;
+    height: 2px;
+    background: #000;
+    border-radius: 5px;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s ease;
+    transform-origin: left;
+}
+
+.menu .bar1 {
+    margin-bottom: 5px;
+}
+
+.menu .bar3 {
+    margin-top: 5px;
+}
+
+.menu.toggle .bar1 {
+    transform-origin: left;
+    transform: rotate(45deg);
+}
+
+.menu.toggle .bar2 {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu.toggle .bar3 {
+    transform-origin: left;
+    transform: rotate(-45deg);
+}
+
+.nav-links {
+    flex-direction: column;
+    position:absolute;
+    top: 105px;
+    left: 100%;
+    width: 250px;
+    height: 18em;
+    background: var(--nav-background);
+    margin-top: var(--nav-height);
+    transition: 0.5s ease-out;
+    display:none;
+    }
+.nav-links li {
+     height: var(--nav-height);
+    line-height: var(--nav-height);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.menu {
+    display: block;
+    margin-right:0%;
+}
+
+.menu.toggle + .nav-links {
+    /*width: 250px;*/
+    transform: translateX(-100%);
+    display:block;
+}
+
+
+/* ログイン、アカウント変更、作成、削除ページ */
+
+
+.block{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    margin-left:25%;
+    /*margin-right:10px;*/
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    width:40%;
+    line-height: 3em; /*行間*/
+}S
+
+/**/
+h1{
+    margin-left: auto;
+    margin-right: auto;
+}
+
