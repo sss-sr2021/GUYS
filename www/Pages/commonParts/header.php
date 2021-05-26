@@ -12,6 +12,8 @@
  *                        //未ログイン時のみアカウント作成リンク表示
  *         2021.05.25 花岡//管理者ページリンク(管理者のみ)の追加
  * 
+ *  $_SESSION['theme']:現在の設定テーマ
+ * 
 */
 require_once './commonParts/functions.php';
 @session_start();
