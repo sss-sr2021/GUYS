@@ -187,7 +187,9 @@ loginBi関数：ログインしていなければログインページへ
 function loginBi(){
     @session_start();
     if(empty($_SESSION['logined'])){    //ログインしていなければ
+        logOut();
         header('Location:./login.php');//ログインページへ
+        
     }
 }
 

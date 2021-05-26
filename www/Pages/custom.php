@@ -75,9 +75,11 @@ include('./commonParts/header.php');
                 <a href="shop.php">ショップ</a><br />
                 <div class="theme">
                 <?php
-                //ユーザーのが所持済のカスタムテーマを表示する。参照先：shop_infoテーブル
-                $_SESSION['logined']["current_theme"]=$rows2[0]["current_theme"];//選択したテーマをセッションに保存
-                $_SESSION['theme']=$rows2[0]["current_theme"];//選択したテーマをセッションに保存
+                
+                if(!empty($_SESSION['logined'])){
+                    //ユーザーのが所持済のカスタムテーマを表示する。参照先：shop_infoテーブル
+                    $_SESSION['logined']["current_theme"]=$rows2[0]["current_theme"];//選択したテーマをセッションに保存
+                    $_SESSION['theme']=$rows2[0]["current_theme"];//選択したテーマをセッションに保存
                     foreach($theme as  $key => $value){
                         if(empty($value)){  //空(0(未所持))だったらスキップして次のthemeの処理へ
                             continue;
@@ -85,6 +87,9 @@ include('./commonParts/header.php');
                         echo "<div class='themes inLineBrock'><img src='../images/theme{$key}.png'  alt='theme{$key}'  name='{$key}'  onclick='imgClick({$key})'　/>" . 
                         "<p>theme{$key}</p></div>" ;
                     }
+                }
+                
+                    
                 ?>
                 </div>
                 <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:800px)"/> 
