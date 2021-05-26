@@ -56,7 +56,7 @@ include('./commonParts/header.php');
                 <form action="createAccount.php" method="post">
                     <p>メールアドレス：<input type="email" name="email" required></p>
                     <p>パスワード：<input type="password" name="password" pattern="[a-zA-Z0-9]{8,16}" required></p>
-                    <p>お名前：<input type="text" name="name" required></p>
+                    <p>お名前：<input type="text" name="name" pattern="{1,20}" required></p>
                     <p>性別：
                     <label><input type="radio" name="gender" value="M" required/>男</label>
                     <label><input type="radio" name="gender" value="F" />女</label>
