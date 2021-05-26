@@ -461,6 +461,18 @@ nav {
     text-transform: uppercase;
     letter-spacing: 3px;
     
+    color          : #ffffff;   
+    text-shadow    : 
+       2px  2px 1px #064f99,
+      -2px  2px 1px #1e87f0,
+       2px -2px 1px #56a6f7,
+      -2px -2px 1px #4393e4,
+       2px  0px 1px #064f99,
+       0px  2px 1px #064f99,
+      -2px  0px 1px #064f99,
+       0px -2px 1px #064f99;  
+
+       font-family: "Century";
 }
 
 

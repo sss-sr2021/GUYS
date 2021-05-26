@@ -14,7 +14,7 @@
 ?>
 <?php
 $pageTitle = "リサーチGO！";
-$h1 ="リサーチGO！";
+$h1 ="リサーチGO!";
 include('./commonParts/header.php');
 ?>
      <div class='container'>
