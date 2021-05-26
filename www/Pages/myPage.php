@@ -129,7 +129,7 @@ include('./commonParts/header.php');
                     <h3>入力フォーム</h3>
                     <p>今日のマイル</p>
                     <form method="post" action="myPage.php">
-                        <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  style="text-align:right" required>km</p><!-- 初期値0 最小値0-->
+                        <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  style="text-align:right" pattern=".{1,6}" required>km</p><!-- 初期値0 最小値0-->
                         <p><input type="submit" name="submit" value="更新"></p>
                         <input type="hidden" name="user_id" value="<?= $user['id']?>">
                     </form>
