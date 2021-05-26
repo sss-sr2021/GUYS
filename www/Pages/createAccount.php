@@ -14,6 +14,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $email=filter_input(INPUT_POST, 'email');
     $pass0=filter_input(INPUT_POST, 'password');
     $pass=password_hash($pass0,PASSWORD_DEFAULT);
@@ -36,7 +37,8 @@
             $shopUserId=dbExe("SELECT id from users WHERE email='$email'");
             $shopUserId=$shopUserId[0]['id'];
             dbExe("INSERT INTO shop_info(user_id)VALUES('$shopUserId')");
-            $message="アカウントを作成しました。";
+            $ok=true; //成功したので、trueにする。
+            //$message="アカウントを作成しました。";
         }
     }
 ?>
@@ -64,7 +66,13 @@ include('./commonParts/header.php');
                     <input type="submit" name="create" value="作成">
                 </form>
         </div>
-
+            <script>
+                //変更した場合のみアラート表示
+                <?php if($ok){ ?>  //$okがtrueの時だけアラート
+                alert('アカウントを作成しました'); 
+                location.href = 'login.php';
+                <?php } ?>
+            </script>
         </main>
      </div>
 <?php
