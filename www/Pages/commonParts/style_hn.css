@@ -170,4 +170,5 @@ button{
 .theme img{
     width:100%;
     cursor:pointer;
+    border:solid 1px #207af0;
 }
