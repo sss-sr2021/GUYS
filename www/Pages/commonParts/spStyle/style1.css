@@ -10,3 +10,34 @@ Created:2021.05.25
 updated:2021.05.25
 
 */
+/* レスポンシブデザイン */
+
+.nav-links {
+    flex-direction: column;
+    position:absolute;
+    top: 105px;
+    left: 100%;
+    width: 250px;
+    height: 18em;
+    background: var(--nav-background);
+    margin-top: var(--nav-height);
+    transition: 0.5s ease-out;
+    display:none;
+    }
+.nav-links li {
+     height: var(--nav-height);
+    line-height: var(--nav-height);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.menu {
+    display: block;
+    margin-left: auto;
+}
+
+.menu.toggle + .nav-links {
+    /*width: 250px;*/
+    transform: translateX(-100%);
+    display:block;
+}

@@ -87,7 +87,8 @@ include('./commonParts/header.php');
                     }
                 ?>
                 </div>
-                <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" />
+                <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:800px)"/> 
+                <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:800px)"/> 
                 <form id="themeForm" method="post"> <!-- 自分に送ってる（上のSQL文で使いたいため） -->
                     <input type="hidden" id="theme" name="theme" value="">
                 </form>
