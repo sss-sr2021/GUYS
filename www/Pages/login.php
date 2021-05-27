@@ -55,7 +55,7 @@ include('./commonParts/header.php');
             <h2>ログイン</h2>
             <p><?= $message?></p>
                 <form action="" method="post">
-                    <p>メールアドレス：<input type="email" name="email" required></p>
+                    <p>メールアドレス：<input type="email" name="email" placeholder="〇〇〇＠〇〇〇" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="submit" value="ログイン"></p>
                 </form>

@@ -77,8 +77,8 @@ include('./commonParts/header.php');
             <h2>メールアドレス変更</h2>
             <p><?= $error_message ?></p>
                 <form action="" method="post">
-                    <p>新しいメールアドレス：<input type="email" name="email" required></p>
-                    <p>新しいメールアドレス(確認用)： <input type="email" name="email2" required></p>
+                    <p>新しいメールアドレス：<input type="email" name="email" placeholder="〇〇〇＠〇〇〇" required></p>
+                    <p>新しいメールアドレス(確認用)： <input type="email" placeholder="〇〇〇＠〇〇〇" name="email2" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="change" value="変更"></p>
                     <!-- ↓↓↓セキュリティ↓↓↓ -->

@@ -59,7 +59,7 @@ include('./commonParts/header.php');
             <h2>アカウント作成</h2>
             <p><?= $message ?></p>
                 <form action="createAccount.php" method="post">
-                    <p>メールアドレス：<input type="email" name="email" required></p>
+                    <p>メールアドレス：<input type="email" name="email" placeholder="〇〇〇＠〇〇〇" required></p>
                     <p>パスワード：<input type="password" name="password" pattern="[a-zA-Z0-9]{8,16}" placeholder="半角英数字8～16文字" required></p>
                     <p>パスワード(確認用)：<input type="password" name="password2" pattern="[a-zA-Z0-9]{8,16}" placeholder="半角英数字8～16文字" required></p>
                     <p>お名前：<input type="text" name="name" pattern=".{1,20}" required></p>
