@@ -17,6 +17,7 @@
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $email=filter_input(INPUT_POST, 'email');
     $pass0=filter_input(INPUT_POST, 'password');
+    $pass2=filter_input(INPUT_POST, 'password2');
     $pass=password_hash($pass0,PASSWORD_DEFAULT);
     $name=filter_input(INPUT_POST, 'name');
     $gender=filter_input(INPUT_POST, 'gender');
@@ -30,6 +31,9 @@
             if($row['email']==filter_input(INPUT_POST,'email')){//usersテーブルのメールアドレスと入力されたメールアドレスが一致すれば
                 $message.="そのメールアドレスは既に存在します。";//エラーメッセージの追加
             }
+        }
+        if(@$pass0 !== @$pass2){ //パスワードが確認用のパスワードと等しくなければエラーメッセージ
+            $message.="同じパスワードを入力してください"; //エラーメッセージの追加
         }
         if(empty($message)){//エラーメッセージがなければ
             //アカウント作成処理
@@ -56,6 +60,7 @@ include('./commonParts/header.php');
                 <form action="createAccount.php" method="post">
                     <p>メールアドレス：<input type="email" name="email" required></p>
                     <p>パスワード：<input type="password" name="password" pattern="[a-zA-Z0-9]{8,16}" placeholder="半角英数字8～16文字" required></p>
+                    <p>パスワード(確認用)：<input type="password" name="password2" pattern="[a-zA-Z0-9]{8,16}" placeholder="半角英数字8～16文字" required></p>
                     <p>お名前：<input type="text" name="name" pattern=".{1,20}" required></p>
                     <p>性別：
                     <label><input type="radio" name="gender" value="M" required/>男</label>
