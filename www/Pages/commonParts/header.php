@@ -44,7 +44,7 @@ if(empty(@$_SESSION['theme'])){
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
-<body class="<?php if(!empty($_SESSION['logined'])){ ?> logined <?php } ?>">
+<body class="<?php if(!empty($_SESSION['logined'])){ ?> logined <?php } ?>" >
     <div class='wrapper'>
         <header style="">
 

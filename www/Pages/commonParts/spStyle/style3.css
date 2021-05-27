@@ -443,7 +443,9 @@ updated:2021.05.25
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden!important;
 }
+
 
 :root {
     --nav-height: 8vh; /* ナビゲーションバーの立幅 */
@@ -494,6 +496,7 @@ nav {
     height: var(--nav-height);
     align-items: center;
     margin-left: auto;
+    
 }
 
 .nav-links li {
@@ -638,3 +641,7 @@ body.logined .create{
     width:60px;
     height:auto;
 }
+
+html {
+    
+   }
