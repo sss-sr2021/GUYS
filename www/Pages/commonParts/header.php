@@ -40,7 +40,7 @@ if(empty(@$_SESSION['theme'])){
     <script src="/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="./commonParts/pcStyle/style<?=$_SESSION['theme']?>.css" media="screen and (min-width:768px)"/> 
     <link rel="stylesheet" href="./commonParts/spStyle/style<?=$_SESSION['theme']?>.css" media="screen and (max-width:767px)"/> 
-    
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
