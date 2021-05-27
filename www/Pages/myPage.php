@@ -26,6 +26,12 @@
     $today = date("Y-m-d");//今日の日付
     $todayMileage=round(filter_input(INPUT_POST,'mileage'));//入力マイレージを四捨五入
     if(!empty($_POST['submit'])){ //もしsubmitが押されれば以下を実行する
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         if(!empty($_SESSION["logined"][$today]) ||@$_SESSION["logined"][$today] ==='' ||@$_SESSION["logined"][$today]==="0"){     //もしテーブルの今日の日付の値が空だったらインサート、値があれば変更
             //usersテーブルsum_mileageの処理
@@ -133,6 +139,9 @@ include('./commonParts/header.php');
                         <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  style="text-align:right" max="999999" required>km</p><!-- 初期値0 最小値0-->
                         <p><input type="submit" name="submit" value="更新"></p>
                         <input type="hidden" name="user_id" value="<?= $user['id']?>">
+                        <!-- ↓↓↓セキュリティ↓↓↓ -->
+                        <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                        <!-- ↑↑↑セキュリティ↑↑↑ -->
                     </form>
                 </div>
                 <div class="user inLineBrock">

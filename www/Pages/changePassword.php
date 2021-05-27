@@ -27,6 +27,12 @@
     $error_message="";
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
     if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
             if(password_verify($pass,$user['pass'])){ //passwordを照合して一致すれば、以下を実行
                 if(@$new_password == @$new_password2){ //新しいパスワードともう一度入力されたパスワードを照合して一致すれば、以下を実行
@@ -67,6 +73,9 @@ include('./commonParts/header.php');
                         <p>新しいパスワード：<input type="password" name="new_password" placeholder="半角英数字8～16文字" required></p>
                         <p>新しいパスワード(確認用)：<input type="password" name="new_password2" placeholder="半角英数字8～16文字" required></p>
                         <p><input type="submit" name="change" value="変更"></p>
+                        <!-- ↓↓↓セキュリティ↓↓↓ -->
+                        <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                        <!-- ↑↑↑セキュリティ↑↑↑ -->
                     </form>
                 </div>
                 

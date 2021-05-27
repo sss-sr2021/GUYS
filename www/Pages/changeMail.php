@@ -27,6 +27,12 @@
     $error_message="";
     $user = $_SESSION['logined'];  //セッションにあるユーザー情報
     if(!empty($_POST['change'])){ //もしchangeにの値が空じゃなければ以下を実行する
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         $emailFromUsers="SELECT email FROM users";
         foreach($dbh->query($emailFromUsers) as $row){//DBに同じメアドがないか検索
@@ -75,6 +81,9 @@ include('./commonParts/header.php');
                     <p>新しいメールアドレス(確認用)： <input type="email" name="email2" required></p>
                     <p>パスワード：<input type="password" name="password" required></p>
                     <p><input type="submit" name="change" value="変更"></p>
+                    <!-- ↓↓↓セキュリティ↓↓↓ -->
+                    <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                    <!-- ↑↑↑セキュリティ↑↑↑ -->
                 </form>
         </div>
         

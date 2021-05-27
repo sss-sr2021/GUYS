@@ -13,6 +13,7 @@
 
     require_once './commonParts/functions.php';
     session_start();
+    session_regenerate_id();
         $email=filter_input(INPUT_POST, 'email');
         $pass=filter_input(INPUT_POST, 'password');
         $message="";//エラーメッセージ

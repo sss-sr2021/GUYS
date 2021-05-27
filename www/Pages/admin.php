@@ -26,6 +26,12 @@
         
         $check = @$_POST['check'];      //チェックが入ったものを配列に入れる。
         if(!empty($_POST['delete'])){       //もし削除ボタンが押されて空じゃなければ
+            //↓↓↓セキュリティ↓↓↓
+            if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+                header('Content-Type: text/plain; charset=UTF-8', true, 400);
+                die('CSRF validation failed.');
+            }
+            //↑↑↑セキュリティ↑↑↑
             foreach((array)$check as $value){       //$checkの配列の中身をforeachで回す。
                 dbExe("DELETE FROM users WHERE id = $value");       //usersテーブルからidを指定して削除
                 dbExe("DELETE FROM shop_info WHERE user_id = $value");      //shop_infoテーブルからidを指定して削除
@@ -72,6 +78,9 @@ include('./commonParts/header.php');
                     <div class="adminsubmit">
                         <input type="submit" name="delete" value="削除" class="adminbutton" onclick="return confirm('本当に削除しますか？')">
                     </div>
+                    <!-- ↓↓↓セキュリティ↓↓↓ -->
+                    <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                    <!-- ↑↑↑セキュリティ↑↑↑ -->
             </form>
                 <script>
                     <?php if($ok){ ?>  //$okがtrueの時だけアラート

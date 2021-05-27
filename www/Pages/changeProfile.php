@@ -22,6 +22,12 @@
 
     //セッションのIDとDBのIDを基準にして名前と性別を変更
     if(!empty($_POST['change'])){  //もしchangeにの値が空じゃなければ以下を実行する
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         $dbh = dbInit();  //functionsからデータベースとの接続関数を持ってくる
         $sth = $dbh-> prepare(  //idが同じなら名前と性別を変更する
             'UPDATE users SET name = :name , gender = :gender WHERE /*pass = :pass and*/ id = :id'
@@ -61,6 +67,9 @@ include('./commonParts/header.php');
                     </p>
                     <!-- <p>パスワード：<input type="password" name="password" required></p> -->
                     <p><input type="submit" name="change" value="変更"></p>
+                    <!-- ↓↓↓セキュリティ↓↓↓ -->
+                    <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                    <!-- ↑↑↑セキュリティ↑↑↑ -->
                 </form>
         </div>
         

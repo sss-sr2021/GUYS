@@ -18,6 +18,12 @@
 
     //購入したら100ポイント減らす処理(usersからpointを100減らす)
     if(@$_POST['point']){
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         $dbh = dbInit();
         $sql2 = "UPDATE users SET point=point-100 WHERE id = :id"; //セッションのIDとデータベースのidを照合し、ポイントを100減らす
         $sth = $dbh->prepare($sql2);
@@ -107,6 +113,9 @@ include('./commonParts/header.php');
                 <form id="themeForm" method="post"> <!-- 自分に送ってる（上のSQL文で使いたいため） -->
                     <input type="hidden" id="theme" name="theme" value="">
                     <input type="hidden" id="point" name="point" value="-100">
+                    <!-- ↓↓↓セキュリティ↓↓↓ -->
+                    <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                    <!-- ↑↑↑セキュリティ↑↑↑ -->
                 </form>
         </main>
     </div>

@@ -17,6 +17,12 @@
     $ok=false; //falseとしてまず置いておく、成功したらtrueになる。
     $user = $_SESSION['logined'];
     if(!empty($_POST['delete'])){
+        //↓↓↓セキュリティ↓↓↓
+        if (!CsrfValidator::validate(filter_input(INPUT_POST, 'token'))) {
+            header('Content-Type: text/plain; charset=UTF-8', true, 400);
+            die('CSRF validation failed.');
+        }
+        //↑↑↑セキュリティ↑↑↑
         dbExe("DELETE FROM users WHERE id =".$user["id"] );//idはセッションにある値を入れる
         dbExe("DELETE FROM mileage WHERE user_id =".$user["id"] );
         dbExe("DELETE FROM shop_info WHERE user_id =".$user["id"] );
@@ -40,6 +46,9 @@ include('./commonParts/header.php');
                 <form action="" method="post">
                     <p>アカウントを削除します。</p>
                     <input type="submit" name="delete" value="削除" onclick="return confirm('本当に削除しますか？')">
+                    <!-- ↓↓↓セキュリティ↓↓↓ -->
+                    <input type="hidden" name="token" value="<?=CsrfValidator::generate()?>">
+                    <!-- ↑↑↑セキュリティ↑↑↑ -->
                     <!--
                 <script>
                     alert('削除しました。');
