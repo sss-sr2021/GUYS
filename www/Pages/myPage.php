@@ -134,7 +134,7 @@ include('./commonParts/header.php');
                 </div>
                 <div class="mile inLineBrock">
                     <h3>入力フォーム</h3>
-                    <p>今日のマイル</p>
+                    <p>今日のマイル(1km:10ポイント)</p>
                     <form method="post" action="myPage.php">
                         <p><input type="number" name="mileage" value="<?= $_SESSION["logined"][$today]?>" min="0"  style="text-align:right" max="999999" required>km</p><!-- 初期値0 最小値0-->
                         <p><input type="submit" name="submit" value="更新"></p>
