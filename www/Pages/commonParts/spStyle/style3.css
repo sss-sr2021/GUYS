@@ -464,6 +464,7 @@ nav {
 
 /*タイトル*/
 .title{
+    width:50%;
     z-index:10;
 }
 .title h1 {

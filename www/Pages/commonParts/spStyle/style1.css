@@ -451,6 +451,7 @@ nav {
 
 /*タイトル*/
 .title{
+    width:50%;
     z-index:10;
 }
 .title h1 {
@@ -474,6 +475,7 @@ nav {
        0px -2px 1px #064f99;  
 
        font-family: "Century";
+       z-index:8;
 }
 
 
