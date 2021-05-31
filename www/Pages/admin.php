@@ -35,6 +35,7 @@
             foreach((array)$check as $value){       //$checkの配列の中身をforeachで回す。
                 dbExe("DELETE FROM users WHERE id = $value");       //usersテーブルからidを指定して削除
                 dbExe("DELETE FROM shop_info WHERE user_id = $value");      //shop_infoテーブルからidを指定して削除
+                dbExe("DELETE FROM mileage WHERE user_id = $value"); //mileageテーブルからidを指定して削除
                 $ok=true;
             }
         }
